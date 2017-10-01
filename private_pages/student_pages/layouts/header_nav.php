@@ -11,7 +11,7 @@
             <li class="dropdown messages-menu">
             <a href="inbox.php">
               <i class="fa fa-envelope-o"></i>
-              <?php $count_messages = count_messages_for_this_admin($admin_id);
+              <?php $count_messages = count_messages_for_this_admin($tbl_student_id);
                 while($messages = mysqli_fetch_assoc($count_messages))
                 {
                  $count_message =  $messages['messages'];
@@ -75,7 +75,7 @@
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="admin_images/<?php echo $image;?>" class="user-image" alt="User Image">
+              <img src="../student_images/<?php echo $image;?>" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs"><?php echo $first_name . " " . $last_name?></span>
             </a>
@@ -85,27 +85,27 @@
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="admin_images/<?php echo $image;?>" class="img-circle" alt="User Image">
+                <img src="../student_images/<?php echo $image;?>" class="img-circle" alt="User Image">
 
                 <p>
                  <?php echo $first_name . " " . $last_name;?>
                  <?php 
                   //admin department
-                  $find_admin_department = admin_department($admin_department_id);
-                  if($find_admin_department){
-                    $admin_department = $find_admin_department['department_code'];
+                  $find_student_department = student_department($student_department);
+                  if($find_student_department){
+                    $student_department_code = $find_student_department['department_code'];
                   }
                  ?>
-                  <small><?php echo $admin_department; ?></small>
+                  <small><?php echo $student_department_code; ?></small>
                 </p>
               </li>
               <!-- Menu Body -->
               
               <!-- Menu Footer-->
               <li class="user-footer">
-                <div class="pull-left">
+               <!-- <div class="pull-left">
                   <a href="admin_profile.php?admin_id=<?php echo $admin_id;?>" class="btn btn-default btn-flat">Profile</a>
-                </div>
+                </div> -->
                 <div class="pull-right">
                   <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>

@@ -23,13 +23,13 @@
 		        		if($check_presence){
 		        			$student_id = $check_presence['tbl_student_id'];
 		        			$date=date("l jS \of F Y ");
-				            $log_message = "You are now registered at " . $date;
+				            $log_message = "registered " . $date;
 				            $log_header = "Student Registration";
 				            $userlevel = "student";
 				            
 		        			$register = register_student_account_to_system($idnumber,$email,$password);
 		        			if($register){
-		        				insert_log($log_user_id,$log_header,$log_message,$userlevel);
+		        				insert_log($student_id,$log_header,$log_message,$userlevel);
 		        				$_SESSION['success_message'] = "congratulations!!! You can now access your S-APP Account";
 		        			}
 		        		}else{

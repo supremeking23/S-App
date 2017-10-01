@@ -6,7 +6,29 @@
 
   //print_r($_GET);
 
+  	$department_id = $_GET['department_id'];
+	$program_id = $_GET['program_id'];
+	$yearlevel = $_GET['yearlevel'];
+	$section_id = $_GET['section_id'];
 
+  	$get_section = "SELECT * FROM tblsection WHERE tbl_section_id = '$section_id'";
+	$run_get_section = mysqli_query($connection,$get_section)or die(mysqli_error($connection));
+
+
+	//fetch section data
+	while($section_data = mysqli_fetch_assoc($run_get_section)){
+
+		$section_name = $section_data['section_name'];
+		$yearlevel_data = $section_data['yearlevel'];
+	}//end fetching of section data
+
+
+   $sql_student="SELECT * FROM tblstudentinfo WHERE department = '$department_id' AND program_major = '$program_id' AND section ='$section_id' AND yearlevel ='$yearlevel' AND isActive =1";
+   $run_sql_student =mysqli_query($connection,$sql_student)or die(mysqli_error($connection));
+
+?>
+
+<?php
   require('../../fpdf/fpdf.php');
 
 class ConductPDF extends FPDF {
@@ -44,22 +66,13 @@ class ConductPDF extends FPDF {
 	$wrapdf->SetFont('Arial','',16);
 	$wrapdf->AliasNbPages();
 
-	$department_id = $_GET['department_id'];
-	$program_id = $_GET['program_id'];
-	$yearlevel = $_GET['yearlevel'];
-	$section_id = $_GET['section_id'];
+
 
 	//get the section name
 
-	$get_section = "SELECT * FROM tblsection WHERE tbl_section_id = '$section_id'";
-	$run_get_section = mysqli_query($connection,$get_section)or die(mysqli_error($connection));
 
-	//fetch section data
-	while($section_data = mysqli_fetch_assoc($run_get_section)){
 
-		$section_name = $section_data['section_name'];
-		$yearlevel_data = $section_data['yearlevel'];
-	}//end fetching of section data
+	
 
 
 
@@ -75,9 +88,7 @@ class ConductPDF extends FPDF {
     
 	
 	
-	$sql_student="SELECT * FROM tblstudentinfo WHERE department = '$department_id' AND program_major = '$program_id' AND section ='$section_id' AND yearlevel ='$yearlevel' AND isActive =1";
-
-	$run_sql_student =mysqli_query($connection,$sql_student)or die(mysqli_error($connection));
+	
 
 
 	$wrapdf->SetFont('Arial','B',10);
@@ -91,12 +102,17 @@ class ConductPDF extends FPDF {
 	//$wrapdf->Ln(8);
 	
 
+	
+
+	
+	echo mysqli_num_rows($run_sql_student);
 	while($fetch_student = mysqli_fetch_assoc($run_sql_student)){
 
 
 		$wrapdf->Cell(40,10,$fetch_student['student_id'],1,0,"C");
+		$wrapdf->Ln();
 
-		$x_axis=$wrapdf->getx();
+		/*$x_axis=$wrapdf->getx();
 		$c_width=70;
 		$c_height=10;
 		$wrapdf->vcell($c_width,$c_height,$x_axis,$fetch_student['first_name'].' '. $fetch_student['middle_name'].' '. $fetch_student['last_name'],1);
@@ -118,7 +134,10 @@ class ConductPDF extends FPDF {
 		$c_height=10;
 		$wrapdf->vcell($c_width,$c_height,$x_axis,$fetch_student['address'],1);
 
-		$wrapdf->Output();
+		$wrapdf->Cell(70,10,$fetch_student['address'],1,0,"C");
+		$wrapdf->Ln();
+*/
+		//$wrapdf->Output();
 	}
 
 

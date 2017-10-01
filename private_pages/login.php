@@ -13,13 +13,27 @@
 
         $email = $_POST['email'];
         $password = $_POST['password'];
-        //$identity = $_POST['identity'];
+        $identity = $_POST['identity'];
 
-        $login = login_function_for_student($email,$password);
-        if($login){
 
-        }else{
-          $_SESSION['failed_message'] = "Wrong email / password";
+        if($identity == "student"){
+            $student = login_function_for_student($email,$password);
+            if($student){
+                $_SESSION['tbl_student_id'] = $student['tbl_student_id'];
+                $log_user_id = $student['tbl_student_id'];
+                $date=date("l jS \of F Y ");
+                $log_message = "Success Login at " . $date;
+                $log_header = "Success Login";
+                $userlevel = "student";
+                insert_log($log_user_id,$log_header,$log_message,$userlevel);
+                redirect_to('student_pages/index.php');
+
+            }else{
+              $_SESSION['failed_message'] = "Wrong email / password";
+            }
+
+        }else if($identity == "councilor"){
+          
         }
 
 
@@ -120,12 +134,12 @@
 			<form action="login.php" method="post">
 				<input type="email" Name="email" class="" placeholder="EMAIL" required="">
 				<input type="password" Name="password" placeholder="PASSWORD" required="">
-        <!--<select name="identity" class="custom-select">
+        <select name="identity" class="custom-select">
 
           <option value="student" selected>STUDENT</option>
           <option value="professor">PROFESSOR</option>
           <option value="councilor">GUIDANCE COUNCILOR</option>
-        </select> -->
+        </select> 
 				<ul class="tickOption">
 					<li>
 						<input type="checkbox" id="brand1" value="">

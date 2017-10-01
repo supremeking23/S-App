@@ -85,15 +85,11 @@ function register_student_account_to_system($idnumber,$email,$password){
     $email = mysql_prep($email);
     $password = mysql_prep($password);
 
-    $query = "UPDATE tblstudentinfo SET password = '$password' WHERE email='$email' AND $student_id = '$idnumber'";
+    $query = "UPDATE tblstudentinfo SET password = '$password' WHERE (email='$email' AND student_id = '$idnumber') ";
 
-    $check_query = $connection->query($query);
+    $check_query = mysqli_query($connection,$query)or die(mysqli_error($connection));
 
-    if($check_query->num_rows ==1){
-        return $check_student = mysqli_fetch_assoc($check_query);
-    }else{
-      return null;
-    }
+    return $check_query;
 }
 
 
@@ -262,6 +258,17 @@ function confirm_logged_in_admin() {
 }
 
 
+function logged_in_student() {
+  return isset($_SESSION["tbl_student_id"]);
+}
+
+function confirm_logged_in_student() {
+  if (!logged_in_student()) {
+    redirect_to("../login.php");
+  }
+}
+
+
 function get_admin_by_id($admin_id){
   global $connection;
 
@@ -400,6 +407,23 @@ function admin_department($admin_id_department){
 }
 
 
+function student_department($student_department){
+  global $connection;
+
+  $student_department = mysql_prep($student_department);
+
+  $query = "SELECT * FROM tbldepartments WHERE department_id = '$student_department'";
+
+  $result = $connection->query($query) or die(mysqli_error($connection));
+
+  if($admin_department = mysqli_fetch_assoc($result)){
+    return $admin_department;
+  }else{
+    return null;
+  }
+
+}
+
 //get all departments
 function get_all_department($department_id){
    global $connection;
@@ -436,6 +460,24 @@ function get_all_department_aside_from_school_admin($department_id){
 
   return $get_department;
 }
+
+function get_department_info($department_id){ //for student
+  global $connection;
+
+  $department_id = mysql_prep($department_id);
+
+  if($department_id == 1){
+    $query = "SELECT  * FROM tbldepartments WHERE department_id != 1 ";
+  }else{
+    $query = "SELECT  * FROM tbldepartments WHERE  department_id = $department_id";
+  }
+  
+
+  $get_department = $connection->query($query) or die(mysqli_error($connection));
+
+  return $get_department;
+}
+
 
 
 //for bulk student
@@ -868,11 +910,12 @@ function get_department_details_by_department_id($department_id){
 }
 
 //get all programs by department id
-function get_all_programs_by_department($department_id){
+function get_all_programs_by_department($department_id,$program_id){
       global $connection;
       $department_id = mysql_prep($department_id);
+      $program_id = mysql_prep($program_id);
 
-      $query = "SELECT * FROM tblcollegeprograms WHERE department_id = '$department_id'";
+      $query = "SELECT * FROM tblcollegeprograms WHERE department_id = '$department_id'AND program_id = '$program_id'";
 
       $get_department_details = $connection->query($query) or die(mysqli_error($connection));
 
@@ -1601,7 +1644,7 @@ function count_messages_for_this_admin($admin_id){
 
       $admin_id = mysql_prep($admin_id);
 
-      $query = "SELECT  COUNT(message_id) AS 'messages' FROM tblmessages WHERE reciever_id = '$admin_id' AND status ='not reply' ORDER BY message_id desc";
+      $query = "SELECT  COUNT(message_id) AS 'messages' FROM tblmessages WHERE reciever_id = '$admin_id' AND status ='not reply'AND reciever_type = 'admin' ORDER BY message_id desc";
 
     
 

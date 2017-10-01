@@ -163,6 +163,7 @@ desired effect
                       $student_name = $get_student_info['first_name'] . ' ' . $get_student_info['last_name'];
                       $student_image = $get_student_info['image'];
                       $student_dept_id = $get_student_info['department'];
+                      $student_program_major = $get_student_info['program_major'];
 
                       //$date_added = $get_student_info['date_added'];
                       $gender = $get_student_info['gender'];
@@ -177,7 +178,7 @@ desired effect
                    }
 
 
-                    $get_student_program = get_all_programs_by_department($student_dept_id);
+                    $get_student_program = get_all_programs_by_department($student_dept_id,$student_program_major);
                      while($student_program= mysqli_fetch_assoc($get_student_program)){
                      $student_program_code = $student_program['program_code'];
                       $student_program_name = $student_program['program_name'];
