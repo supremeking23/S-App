@@ -2,7 +2,10 @@ flasws
 once the prof is add to that section dapat di na sya lalabas sa pagpipilian
 pag eedit ng assigned prof
 
+…or push an existing repository from the command line
 
+git remote add origin https://github.com/supremeking23/S-App.git
+git push -u origin master
 
 
 
