@@ -7,23 +7,31 @@
 
   <?php
       //login process
-      $emaik="";
+      $email="";
       if(isset($_POST['submit'])){
         //process the form
 
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $identity = $_POST['identity'];
+        //$identity = $_POST['identity'];
+
+        $login = login_function_for_student($email,$password);
+        if($login){
+
+        }else{
+          $_SESSION['failed_message'] = "Wrong email / password";
+        }
 
 
-        if($identity == "student"){
+
+      /*  if($identity == "student"){
               $student_attempt_login = attempt_login_student($email,$password);
 
               if($student_attempt_login){
                 $_SESSION["student_id"] = $student_attempt_login["student_id"];
                 redirect_to("student_pages/Sidebar.php");
               }else{
-                $_SESSION['failed_message'] = "Wrong email / password";
+                
                 //echo "<script>alert('sdsd')</script>";
               }
 
@@ -48,7 +56,7 @@
               }
         }
 
-
+        */
       }
   ?>
 
@@ -112,12 +120,12 @@
 			<form action="login.php" method="post">
 				<input type="email" Name="email" class="" placeholder="EMAIL" required="">
 				<input type="password" Name="password" placeholder="PASSWORD" required="">
-        <select name="identity" class="custom-select">
+        <!--<select name="identity" class="custom-select">
 
           <option value="student" selected>STUDENT</option>
           <option value="professor">PROFESSOR</option>
           <option value="councilor">GUIDANCE COUNCILOR</option>
-        </select>
+        </select> -->
 				<ul class="tickOption">
 					<li>
 						<input type="checkbox" id="brand1" value="">
@@ -127,7 +135,7 @@
 				</ul>
 				<div class="submitOption">
 					<input type="submit" name="submit" value="LOGIN">
-					<p> To register new account <span>→</span> <a href="signup.php"> Click Here</a></p>
+					<p> <?php //echo ucfirst("Ivan");?>To register new account <span>→</span> <a href="signup.php"> Click Here</a></p>
 					<div class="clear"></div>
 				</div>
 			</form>

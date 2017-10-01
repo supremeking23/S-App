@@ -214,7 +214,7 @@ desired effect
 
                     <a href="student_edit_info.php?student_id=<?php echo $_GET['student_id']?>" class="btn btn-primary btn-block"><b>Edit Information</b></a> 
                     <a href="student_academic_performace_info.php?student_id=<?php echo $_GET['student_id']?>" class="btn btn-success btn-block"><b>Student Academic Performance</b></a> 
-                    <a href="prof_classes_info.php?professor_id=<?php echo $_GET['professor_id']?>" class="btn btn-warning btn-block"><b>Student Guidance</b></a> 
+                   <!-- <a href="prof_classes_info.php?professor_id=<?php echo $_GET['professor_id']?>" class="btn btn-warning btn-block"><b>Student Guidance</b></a> -->
                   </div>
                   <!-- /.box-body -->
                 </div>

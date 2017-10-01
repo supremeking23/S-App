@@ -43,6 +43,62 @@ function check_id_presence($idnumber){
   }
 }
 
+
+function check_id_and_email($idnumber,$email){
+  global $connection;
+  $idnumber = mysql_prep($idnumber);
+  $email = mysql_prep($email);
+
+  $query = "Select * FROM tblstudentinfo WHERE student_id = '$idnumber' AND email = '$email'AND password = ' '  LIMIT 1";
+
+  $check_query = $connection->query($query);
+
+  if($check_query->num_rows ==1){
+      return $check_student = mysqli_fetch_assoc($check_query);
+  }else{
+    return null;
+  }
+}
+
+
+function login_function_for_student($email,$password){
+     global $connection;
+  
+  $email = mysql_prep($email);
+  $password = mysql_prep($password);
+
+  $query = "Select * FROM tblstudentinfo WHERE email = '$email' AND password = '$password'  LIMIT 1";
+
+  $check_query = $connection->query($query);
+
+  if($check_query->num_rows ==1){
+      return $check_student = mysqli_fetch_assoc($check_query);
+  }else{
+    return null;
+  }
+}
+
+function register_student_account_to_system($idnumber,$email,$password){
+     global $connection;
+    
+    $idnumber = mysql_prep($idnumber);
+    $email = mysql_prep($email);
+    $password = mysql_prep($password);
+
+    $query = "UPDATE tblstudentinfo SET password = '$password' WHERE email='$email' AND $student_id = '$idnumber'";
+
+    $check_query = $connection->query($query);
+
+    if($check_query->num_rows ==1){
+        return $check_student = mysqli_fetch_assoc($check_query);
+    }else{
+      return null;
+    }
+}
+
+
+
+
 //after the id has been verified... checked if the id has an email and a password /// will not use any time soon
 function check_student_id($idnumber){
   global $connection;
@@ -1526,6 +1582,33 @@ function get_subject_for_this_tutorial($subject_id){
 }
 
 
+function get_all_messages_for_this_admin($admin_id){
+     global $connection;
+
+      $admin_id = mysql_prep($admin_id);
+
+      $query = "SELECT  * FROM tblmessages WHERE reciever_id = '$admin_id'";
+
+    
+
+      $get_data = $connection->query($query) or die(mysqli_error());
+
+    return $get_data;
+}
+
+function count_messages_for_this_admin($admin_id){
+      global $connection;
+
+      $admin_id = mysql_prep($admin_id);
+
+      $query = "SELECT  COUNT(message_id) AS 'messages' FROM tblmessages WHERE reciever_id = '$admin_id' AND status ='not reply' ORDER BY message_id desc";
+
+    
+
+      $get_data = $connection->query($query) or die(mysqli_error($connection));
+
+    return $get_data;
+}
 
 function open_encode_of_grade(){
    global $connection;

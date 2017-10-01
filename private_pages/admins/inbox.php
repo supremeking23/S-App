@@ -167,19 +167,29 @@ desired effect
                 </tr>
                 </thead>
                 <tbody>
+                  
+                    <?php //get inbox by admin_id
+                    $get_inbox = get_all_messages_for_this_admin($admin_id);
+                    while($fetch_inbox = mysqli_fetch_assoc($get_inbox)):
+                    ?>
+
+
+
                 <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X</td>
+
+                  <td><?php echo $fetch_inbox['sender_school_id'];?></td>
+                  <td> <?php echo $fetch_inbox['sender_name'];?></td>
+                  <td><?php echo $fetch_inbox['sender_email']?></td>
+                  <td><?php echo $fetch_inbox['subject']?></td>
+                  <td><?php echo $fetch_inbox['sender_message']?></td>
                   <td>
                   <button type="button" class="btn btn-sm btn-primary" title="Reply" data-tooltip="tooltip"><i class="fa  fa-send"></i></button> &nbsp&nbsp&nbsp
                   <a href="process_pages/delete_message.php" class="btn btn-danger btn-sm" title="Delete" data-tooltip="tooltip"><i class="fa fa-trash"></i></a>
                   </td>
                 </tr>
+
+
+              <?php endwhile; // end fetch inbox?>
               </tbody>
               </table>
             </div>
