@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2017 at 09:32 PM
+-- Generation Time: Oct 04, 2017 at 09:03 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -178,7 +178,7 @@ CREATE TABLE `tbldepartments` (
 
 INSERT INTO `tbldepartments` (`department_id`, `department_code`, `department_name`, `department_logo`, `department_banner`, `department_color`, `mission`, `vision`) VALUES
 (1, 'SCHOOL-ADMIN', 'SCHOOL-ADMIN', '', '', '#0073b7', '', ''),
-(12, 'CCS', 'College of Computer Sciences', 'engineer.png', 'engineer banner.png', '#004080', '<p>Guided by its vision of commitment, the College shall provide a competitive, relevant, and functional information technology education curriculum responsive to the needs of the industrial and business organizations of the locality.<br></p>', '<p>The College of Computer Science envisions an Information Technology Education Institution committed to the development and adequate utilization and applications of information technology.<br></p>');
+(12, 'CCS', 'College of Computer Sciences', 'Logo1.png', 'engineer banner.png', '#004080', '<p>Guided by its vision of commitment, the College shall provide a competitive, relevant, and functional information technology education curriculum responsive to the needs of the industrial and business organizations of the locality.<br></p>', '<p>The College of Computer Science envisions an Information Technology Education Institution committed to the development and adequate utilization and applications of information technology.<br></p>');
 
 -- --------------------------------------------------------
 
@@ -205,7 +205,9 @@ CREATE TABLE `tblevents` (
 INSERT INTO `tblevents` (`id`, `start`, `end`, `title`, `start_time`, `end_time`, `department_id`, `type`, `admin_id`) VALUES
 (1, '2017-10-03', NULL, 'School Event', '12:00:00', NULL, 1, 'Single day event', 1),
 (2, '2017-10-02', NULL, 'Checking', '18:09:00', NULL, 12, 'Single day event', 1),
-(3, '2017-10-09', '2017-10-14', 'week summit', '11:11:00', '12:00:00', 1, 'Multiple Day Event', 1);
+(3, '2017-10-09', '2017-10-14', 'week summit', '11:11:00', '12:00:00', 1, 'Multiple Day Event', 1),
+(4, '2017-10-05', NULL, 'hahsads', '00:11:00', NULL, 12, 'Single day event', 1),
+(5, '2017-10-06', NULL, 'friday the 6th', '12:02:00', NULL, 12, 'Single day event', 1);
 
 -- --------------------------------------------------------
 
@@ -333,31 +335,46 @@ INSERT INTO `tbllogs` (`log_id`, `log_user_id`, `log_user_level`, `log_header`, 
 (287, 1, 'admin', 'Success Logout', 'Success Logout at Sunday 1st of October 2017 ', '23:19:04', '2017-10-01', 0, ''),
 (288, 1, 'admin', 'Success Login', 'Success Login at Sunday 1st of October 2017 ', '00:27:07', '2017-10-02', 0, ''),
 (289, 36, 'student', 'Success Logout', 'Success Logout at Sunday 1st of October 2017 ', '01:19:07', '2017-10-02', 0, ''),
-(290, 36, 'student', 'Success Login', 'Success Login at Sunday 1st of October 2017 ', '01:19:17', '2017-10-02', 0, '');
+(290, 36, 'student', 'Success Login', 'Success Login at Sunday 1st of October 2017 ', '01:19:17', '2017-10-02', 0, ''),
+(291, 36, 'student', 'Success Login', 'Success Login at Monday 2nd of October 2017 ', '13:29:27', '2017-10-02', 0, ''),
+(292, 36, 'student', 'Success Logout', 'Success Logout at Monday 2nd of October 2017 ', '13:29:58', '2017-10-02', 0, ''),
+(293, 1, 'admin', 'Success Login', 'Success Login at Monday 2nd of October 2017 ', '01:21:18', '2017-10-03', 0, ''),
+(294, 1, 'admin', 'Success Logout', 'Success Logout at Monday 2nd of October 2017 ', '01:32:13', '2017-10-03', 0, ''),
+(295, 8, 'admin', 'Success Login', 'Success Login at Monday 2nd of October 2017 ', '01:32:17', '2017-10-03', 0, ''),
+(296, 1, 'admin', 'Success Login', 'Success Login at Tuesday 3rd of October 2017 ', '11:26:21', '2017-10-03', 0, ''),
+(297, 1, 'admin', 'Add Event', 'Add Event at Tuesday 3rd of October 2017 ', '11:30:25', '2017-10-03', 0, ''),
+(298, 1, 'admin', 'Success Login', 'Success Login at Tuesday 3rd of October 2017 ', '01:23:07', '2017-10-04', 0, ''),
+(299, 1, 'admin', 'Success Login', 'Success Login at Wednesday 4th of October 2017 ', '11:51:34', '2017-10-04', 0, ''),
+(300, 1, 'admin', 'Success Login', 'Success Login at Wednesday 4th of October 2017 ', '16:18:14', '2017-10-04', 0, ''),
+(301, 1, 'admin', 'Success Logout', 'Success Logout at Wednesday 4th of October 2017 ', '02:11:12', '2017-10-05', 0, ''),
+(302, 8, 'admin', 'Success Login', 'Success Login at Wednesday 4th of October 2017 ', '02:11:16', '2017-10-05', 0, '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblmessages`
+-- Table structure for table `tblmessage`
 --
 
-CREATE TABLE `tblmessages` (
+CREATE TABLE `tblmessage` (
   `message_id` int(11) NOT NULL,
-  `sender_id` int(11) DEFAULT NULL,
-  `sender_school_id` text,
-  `sender_name` text,
-  `sender_type` varchar(45) DEFAULT NULL,
-  `sender_email` text,
-  `subject` varchar(45) DEFAULT NULL,
-  `sender_message` text,
-  `date_send` datetime DEFAULT NULL,
-  `reciever_id` int(11) DEFAULT NULL,
-  `reciever_type` varchar(45) DEFAULT NULL,
-  `reciever_name` text,
-  `reply_message` text,
-  `date_reply` datetime DEFAULT NULL,
-  `status` varchar(45) DEFAULT NULL
+  `student_id` varchar(45) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `subject` varchar(45) NOT NULL,
+  `message` text NOT NULL,
+  `date_created` datetime NOT NULL,
+  `status` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tblmessage`
+--
+
+INSERT INTO `tblmessage` (`message_id`, `student_id`, `name`, `email`, `subject`, `message`, `date_created`, `status`) VALUES
+(1, 'A0861506', 'Irene Joy Funcion', 'irenejoyfuncion@gmail.com', 'Test 1', 'Testing', '2017-10-01 12:00:00', ''),
+(2, 'A0861506', 'Irene Joy Funcion', 'irenejoyfuncion@gmail.com', 'Test 2', 'Requesting for back up', '2017-10-01 12:00:00', ''),
+(4, 'A0861506', 'Irene Joy Funcion', 'irenejoyfuncion@gmail.com', 'request follow up part 2', 'hehehehehhehehehehehehehhehehe', '2017-10-02 02:00:00', ''),
+(5, 'A0861506', 'Irene Joy Funcion', 'irenejoyfuncion@gmail.com', 'request follow up part 3', 'anjan na????', '2017-10-02 02:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -454,6 +471,31 @@ CREATE TABLE `tblprofrating` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tblreplymessage`
+--
+
+CREATE TABLE `tblreplymessage` (
+  `reply_id` int(11) NOT NULL,
+  `student_id` varchar(50) NOT NULL,
+  `recipient` varchar(50) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `from_admin` varchar(50) NOT NULL,
+  `message` text NOT NULL,
+  `date_created` datetime NOT NULL,
+  `status` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tblreplymessage`
+--
+
+INSERT INTO `tblreplymessage` (`reply_id`, `student_id`, `recipient`, `email`, `from_admin`, `message`, `date_created`, `status`) VALUES
+(2, 'A0861506', 'Irene Joy Funcion', 'irenejoyfuncion@gmail.com', 'Ivan Christian Jay Funcion', 'ano bayun??\r\n', '2017-10-05 01:10:48', ''),
+(3, 'A0861506', 'Irene Joy Funcion', 'irenejoyfuncion@gmail.com', 'Ivan Christian Jay Funcion', 'wala ako dito\r\n', '2017-10-05 01:11:14', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tblsection`
 --
 
@@ -533,7 +575,11 @@ CREATE TABLE `tblstudentinfo` (
 INSERT INTO `tblstudentinfo` (`tbl_student_id`, `student_id`, `last_name`, `first_name`, `middle_name`, `address`, `contact`, `image`, `date_birth`, `email`, `password`, `gender`, `program_major`, `department`, `guardian_name`, `isActive`, `section`, `yearlevel`) VALUES
 (34, 'A0861506', 'Funcion', 'Irene Joy', 'Echanes', 'Makati City', '0909343431', '', '1995-10-22', 'irenejoyfuncion@gmail.com', '', 'Female', 7, 12, 'Ireneo G. Funcion', 1, 1, 1),
 (36, 'A0077973', 'Forteza', 'Barbara', 'Dionisio', 'Makati City', '0909343431', 'background1.jpg', '1995-10-22', 'barbaraforteza@gmail.com', 'barbie', 'Female', 7, 12, 'Joshua Dionisio', 1, 1, 1),
-(37, 'A0229608', 'Echanez', 'Jims Raymond', 'Lorenzo', 'Las Pinas City', '0909343432', '', '1995-10-23', 'jayjaymeep@gmai.com', '', 'Male', 7, 12, 'Henry Echanez', 1, 1, 1);
+(37, 'A0229608', 'Echanez', 'Jims Raymond', 'Lorenzo', 'Las Pinas City', '0909343432', '', '1995-10-23', 'jayjaymeep@gmai.com', '', 'Male', 7, 12, 'Henry Echanez', 1, 1, 1),
+(60, 'A0711044', 'Gulo', 'Rhea Marie', 'Nobela', 'New Manila', '09876231432', '', '1995-10-25', 'rheamarieg@gmail.com', 'rhea', 'Female', 7, 12, 'Juan Gulo', 1, 0, 0),
+(61, 'A0198515', 'Arduo', 'Jonathan', 'Roxas', 'Harvard', '09876567890', '', '1995-11-11', 'onat143@gmail.com', 'cha', 'Male', 7, 12, 'Onat Arduo', 1, 0, 0),
+(62, 'A0162493', 'Cruz', 'John Paulo', 'Vergara', 'New West', '9878134561', '', '1995-09-11', 'jpcruz@gmail.com', 'salatiks', 'Male', 7, 12, 'Jonathan Arduo', 1, 0, 0),
+(63, 'A0381597', 'Suyom', 'Emanuel', 'Legarda', 'Makati City', '09479888749', 'tblprivileges.PNG', '1988-05-16', 'suyomlord666@gmail.com', 'suyom', 'Male', 8, 12, 'Larry Suyom', 1, 9, 1);
 
 -- --------------------------------------------------------
 
@@ -747,9 +793,9 @@ ALTER TABLE `tbllogs`
   ADD PRIMARY KEY (`log_id`);
 
 --
--- Indexes for table `tblmessages`
+-- Indexes for table `tblmessage`
 --
-ALTER TABLE `tblmessages`
+ALTER TABLE `tblmessage`
   ADD PRIMARY KEY (`message_id`);
 
 --
@@ -775,6 +821,12 @@ ALTER TABLE `tblprofessorsubject`
 --
 ALTER TABLE `tblprofrating`
   ADD PRIMARY KEY (`profrating_id`);
+
+--
+-- Indexes for table `tblreplymessage`
+--
+ALTER TABLE `tblreplymessage`
+  ADD PRIMARY KEY (`reply_id`);
 
 --
 -- Indexes for table `tblsection`
@@ -873,7 +925,7 @@ ALTER TABLE `tbldepartments`
 -- AUTO_INCREMENT for table `tblevents`
 --
 ALTER TABLE `tblevents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tblguidance`
 --
@@ -893,12 +945,12 @@ ALTER TABLE `tblguidancerating`
 -- AUTO_INCREMENT for table `tbllogs`
 --
 ALTER TABLE `tbllogs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=291;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=303;
 --
--- AUTO_INCREMENT for table `tblmessages`
+-- AUTO_INCREMENT for table `tblmessage`
 --
-ALTER TABLE `tblmessages`
-  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tblmessage`
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tblprevileges`
 --
@@ -920,6 +972,11 @@ ALTER TABLE `tblprofessorsubject`
 ALTER TABLE `tblprofrating`
   MODIFY `profrating_id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `tblreplymessage`
+--
+ALTER TABLE `tblreplymessage`
+  MODIFY `reply_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `tblsection`
 --
 ALTER TABLE `tblsection`
@@ -928,7 +985,7 @@ ALTER TABLE `tblsection`
 -- AUTO_INCREMENT for table `tblstudentinfo`
 --
 ALTER TABLE `tblstudentinfo`
-  MODIFY `tbl_student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `tbl_student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 --
 -- AUTO_INCREMENT for table `tblstudentsubjects`
 --

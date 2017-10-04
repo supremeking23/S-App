@@ -25,7 +25,8 @@
             $date=date("l jS \of F Y ");
             $log_message = "Add Event at " . $date;
             $log_header = "Add Event";
-            insert_log($log_user_id,$log_header,$log_message);
+            $userlevel = "admin";
+            insert_log($log_user_id,$log_header,$log_message,$userlevel);
             redirect_to("../index.php");
        
        }else{

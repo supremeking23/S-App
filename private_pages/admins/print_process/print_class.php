@@ -23,15 +23,31 @@
 	}//end fetching of section data
 
 
-   $sql_student="SELECT * FROM tblstudentinfo WHERE department = '$department_id' AND program_major = '$program_id' AND section ='$section_id' AND yearlevel ='$yearlevel' AND isActive =1";
-   $run_sql_student =mysqli_query($connection,$sql_student)or die(mysqli_error($connection));
+	//fetch department data 
+  		$get_department = "SELECT * FROM tbldepartments WHERE department_id = '$department_id'";
+	$run_get_department = mysqli_query($connection,$get_department)or die(mysqli_error($connection));
+		//fetch section data
+	while($department_data = mysqli_fetch_assoc($run_get_department)){
+
+		$department_logo = $department_data['department_logo'];
+		//$yearlevel_data = $department_data['yearlevel'];
+	}//end fetching of department data
 
 ?>
 
 <?php
-  require('../../fpdf/fpdf.php');
+  require('5/fpdf.php');
 
-class ConductPDF extends FPDF {
+$query = "SELECT * FROM tblstudentinfo WHERE department = '$department_id' AND program_major = '$program_id' AND section ='$section_id' AND yearlevel ='$yearlevel' AND isActive =1";
+
+
+
+
+
+$run_query = mysqli_query($connection,$query);
+if(mysqli_num_rows($run_query)>0){
+
+	class ConductPDF extends FPDF {
 		function vcell($c_width,$c_height,$x_axis,$text){
 			$w_w=$c_height/3;
 			$w_w_1=$w_w+2;
@@ -67,80 +83,68 @@ class ConductPDF extends FPDF {
 	$wrapdf->AliasNbPages();
 
 
-
-	//get the section name
-
-
-
-	
-
-
-
-	//$wrapdf->Image('images/SD_logo.png',37,10,25);
+	$wrapdf->Image('../department logos/Logo2.png',37,10,25);
+	$wrapdf->Image('../department logos/'.$department_logo,220,10,25);  
 	$wrapdf->SetFont('Arial','B',16);
 	$wrapdf->Cell(0,10,"University of Makati.",0,1,"C");
 	$wrapdf->SetFont('Arial','I',14);
-	$wrapdf->Cell(0,2,"List of Students for " . $yearlevel_data ."-".$section_name ,0,1,"C");
-	$wrapdf->SetFont('Arial','',14);
-	
-	//$wrapdf->Cell(0,10,"As Of ".$summary_asof,0,1,"C");
-	$wrapdf->Ln(8);
-    
+	$wrapdf->Cell(0,2,"J.P. Rizal Extension, West Rembo, Makati City",0,1,"C");
+	$wrapdf->SetFont('Arial','I',14);
+	$wrapdf->Cell(0,20,"Student Master List for: " .$yearlevel. ' - '. $section_name,0,1,"C");
 	
 	
-	
+	$wrapdf->Ln(10);
 
 
 	$wrapdf->SetFont('Arial','B',10);
 	$wrapdf->Cell(40,10,"Student ID",1,0,"C");
-	$wrapdf->Cell(70,10,"Student Name",1,0,"C");
+	$wrapdf->Cell(50,10,"Student Name",1,0,"C");
+	$wrapdf->Cell(60,10,"Address",1,0,"C");
 	$wrapdf->Cell(40,10,"Contact Number",1,0,"C");
-	$wrapdf->Cell(60,10,"Date of Birth",1,0,"C");
-	$wrapdf->Cell(70,10,"Addresss",1,1,"C");
-
-
-	//$wrapdf->Ln(8);
+	$wrapdf->Cell(50,10,"Email",1,0,"C");
+	$wrapdf->Cell(40,10,"Date of Birth",1,1,"C");
 	
 
-	
+	while($row = mysqli_fetch_assoc($run_query)){
+		
 
-	
-	echo mysqli_num_rows($run_sql_student);
-	while($fetch_student = mysqli_fetch_assoc($run_sql_student)){
-
-
-		$wrapdf->Cell(40,10,$fetch_student['student_id'],1,0,"C");
-		$wrapdf->Ln();
-
-		/*$x_axis=$wrapdf->getx();
-		$c_width=70;
-		$c_height=10;
-		$wrapdf->vcell($c_width,$c_height,$x_axis,$fetch_student['first_name'].' '. $fetch_student['middle_name'].' '. $fetch_student['last_name'],1);
-
+		$wrapdf->Cell(40,10,$row['student_id'],1,0,"C");
 
 		$x_axis=$wrapdf->getx();
-		$c_width=40;
+		$c_width=50;
 		$c_height=10;
-		$wrapdf->vcell($c_width,$c_height,$x_axis,$fetch_student['contact'],1);
+		$wrapdf->vcell($c_width,$c_height,$x_axis,$row['first_name'].' '. $row['last_name'],1);
+
 
 		$x_axis=$wrapdf->getx();
 		$c_width=60;
 		$c_height=10;
-		$wrapdf->vcell($c_width,$c_height,$x_axis,$fetch_student['date_birth'],1);
-
+		$wrapdf->vcell($c_width,$c_height,$x_axis,$row['address'],1);
 
 		$x_axis=$wrapdf->getx();
-		$c_width=70;
+		$c_width=40;
 		$c_height=10;
-		$wrapdf->vcell($c_width,$c_height,$x_axis,$fetch_student['address'],1);
+		$wrapdf->vcell($c_width,$c_height,$x_axis,$row['contact'],1);
 
-		$wrapdf->Cell(70,10,$fetch_student['address'],1,0,"C");
-		$wrapdf->Ln();
-*/
-		//$wrapdf->Output();
+		$x_axis=$wrapdf->getx();
+		$c_width=50;
+		$c_height=10;
+		$wrapdf->vcell($c_width,$c_height,$x_axis,$row['email'],1);
+
+
+		$wrapdf->Cell(40,10,$row['date_birth'],1,1,"C");
+		
+	
+	
 	}
 
 
+	$wrapdf->Output();
+}else{
+	$_SESSION['failed_message'] = "No Data Found";
+	redirect_to("../class.php");
+
+}
 
 	
 ?>

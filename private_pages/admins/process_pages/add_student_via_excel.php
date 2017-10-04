@@ -58,17 +58,17 @@
      			 $newformat = date('Y-m-d',PHPExcel_Shared_Date::ExcelToPHP($worksheet->getCellByColumnAndRow(5, $row)->getValue()));
 
 			     $date_birth = mysqli_real_escape_string($connection, $newformat);
+			      $gender  =mysqli_real_escape_string($connection, $worksheet->getCellByColumnAndRow(6, $row)->getValue()); 
+			     $guardian_name =mysqli_real_escape_string($connection, $worksheet->getCellByColumnAndRow(7, $row)->getValue()); 
+			     $email =mysqli_real_escape_string($connection, $worksheet->getCellByColumnAndRow(8, $row)->getValue()); 
+			      $password  =mysqli_real_escape_string($connection, $worksheet->getCellByColumnAndRow(9, $row)->getValue()); 
 
-
-			     $guardian_name =mysqli_real_escape_string($connection, $worksheet->getCellByColumnAndRow(6, $row)->getValue()); 
-			     $email =mysqli_real_escape_string($connection, $worksheet->getCellByColumnAndRow(7, $row)->getValue()); 
-
-			     $gender  =mysqli_real_escape_string($connection, $worksheet->getCellByColumnAndRow(8, $row)->getValue()); 
+			    
 
 			     // $password =mysqli_real_escape_string($connection, $worksheet->getCellByColumnAndRow(8, $row)->getValue()); 
 
 
-			    $query = "INSERT INTO tblstudentinfo(student_id,last_name,first_name,middle_name,address,contact,date_birth,department,isActive,program_major,guardian_name,email,gender) VALUES ('$student_id','$last_name','$first_name','$middle_name','$address','$contact','$date_birth','$department',1,'$program','$guardian_name','$email','$gender')";
+			    $query = "INSERT INTO tblstudentinfo(student_id,last_name,first_name,middle_name,address,contact,date_birth,department,isActive,program_major,guardian_name,email,gender,password) VALUES ('$student_id','$last_name','$first_name','$middle_name','$address','$contact','$date_birth','$department',1,'$program','$guardian_name','$email','$gender','$password')";
 			    	$success = mysqli_query($connection, $query)or die(mysqli_error($connection));
 
 

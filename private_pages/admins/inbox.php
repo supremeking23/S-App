@@ -142,6 +142,7 @@ desired effect
           echo message_success();
           //failed message for updating profile picture wrong password
          echo  failed_message();
+        // echo read_unread_message();
         ?>
 
         
@@ -163,13 +164,14 @@ desired effect
                   <th>Email</th>
                   <th>Subject</th>
                   <th>Message</th>
+                  <th>Date</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
                   
                     <?php //get inbox by admin_id
-                    $get_inbox = get_all_messages_for_this_admin($admin_id);
+                    $get_inbox = get_all_messages_for_this_admin();
                     while($fetch_inbox = mysqli_fetch_assoc($get_inbox)):
                     ?>
 
@@ -177,14 +179,131 @@ desired effect
 
                 <tr>
 
-                  <td><?php echo $fetch_inbox['sender_school_id'];?></td>
-                  <td> <?php echo $fetch_inbox['sender_name'];?></td>
-                  <td><?php echo $fetch_inbox['sender_email']?></td>
+                  <td><?php echo $fetch_inbox['student_id'];?></td>
+                  <td> <?php echo $fetch_inbox['name'];?></td>
+                  <td><?php echo $fetch_inbox['email']?></td>
                   <td><?php echo $fetch_inbox['subject']?></td>
-                  <td><?php echo $fetch_inbox['sender_message']?></td>
+
+                 
                   <td>
-                  <button type="button" class="btn btn-sm btn-primary" title="Reply" data-tooltip="tooltip"><i class="fa  fa-send"></i></button> &nbsp&nbsp&nbsp
-                  <a href="process_pages/delete_message.php" class="btn btn-danger btn-sm" title="Delete" data-tooltip="tooltip"><i class="fa fa-trash"></i></a>
+                     <?php //read message
+                    if($fetch_inbox['status'] != 'Seen'){
+                    ?>
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#readUnreadMessage<?php echo $fetch_inbox['message_id'] ?>">Unread</button>
+
+                            <div class="modal fade" id="readUnreadMessage<?php echo $fetch_inbox['message_id'] ?>">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                                  <h4 class="modal-title"></h4>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="well">
+                                      <b><label for="sender_name">Sender Name</label></b><br />
+                                      <input type="text" readonly="" name="sender_name" value="<?php echo $fetch_inbox['name'];?>" class="form-control "> <br /> <br />
+                                      <label for="message">Message</label><br />
+                                      <textarea class="form-control" rows="7" cols="80" readonly=""><?php echo $fetch_inbox['message'];?></textarea>
+                                  </div>    
+                                </div>
+                                <div class="modal-footer">
+                                 <form method="POST" action="process_pages/message_process.php">
+                                  <input type="hidden" name="message_id" value="<?php echo $fetch_inbox['message_id'] ?>">
+                                  <button type="submit" name= "read_unread" class="btn btn-primary pull-right">Close</button>
+                                  </form>
+                                </div>
+                              </div>
+                              <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                          </div>
+                          <!-- /.modal -->
+
+                    <?php }else{ ?>
+                   <button class="btn btn-danger" data-toggle="modal" data-target="#readMessage<?php echo $fetch_inbox['message_id'] ?>">Read</button>
+
+                     <div class="modal fade" id="readMessage<?php echo $fetch_inbox['message_id'] ?>">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title"></h4>
+                          </div>
+                          <div class="modal-body">
+                              <div class="well">
+                                      <b><label for="sender_name">Sender Name</label></b><br />
+                                      <input type="text" readonly="" name="sender_name" value="<?php echo $fetch_inbox['name'];?>" class="form-control "> <br /> <br />
+                                      <label for="message">Message</label><br />
+                                      <textarea class="form-control" rows="7" cols="80" readonly=""><?php echo $fetch_inbox['message'];?></textarea>
+                                  </div>    
+                          </div>
+                          <div class="modal-footer">
+                          
+                            <button type="button" name= "read_unread" data-dismiss="modal" class="btn btn-primary pull-right">Close</button>
+                          
+                          </div>
+                        </div>
+                        <!-- /.modal-content -->
+                      </div>
+                      <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
+
+                  <?php } ?>
+                  </td>
+
+                   <?php $date =date_create($fetch_inbox['date_created']);
+                          $date_send= date_format($date," F d Y g:i:s A");
+                          //echo $log_date;
+                          ?>
+                  <td><?php echo $date_send; ?></td>
+                  <td>
+                  <button type="button" class="btn btn-sm btn-primary" title="Reply" data-tooltip="tooltip" data-toggle="modal" data-target="#replyBox<?php echo $fetch_inbox['message_id'] ?>"><i class="fa  fa-send"></i></button> &nbsp&nbsp&nbsp
+
+                  <!--reply from admin -->
+                  <div class="modal fade" id="replyBox<?php echo $fetch_inbox['message_id'] ?>">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title"></h4>
+                          </div>
+                          <div class="modal-body">
+                              <div class="well">
+
+                                  <form action="process_pages/message_process.php" method="POST">
+                                        <b><label for="recipient_name">Recipient Name</label></b><br />
+                                      <input type="text" readonly="" name="recipient_name" value="<?php echo $fetch_inbox['name'];?>" class="form-control "> <br /> <br />
+                                       <b><label for="email">email</label></b><br />
+                                      <input type="text" readonly="" name="email" value="<?php echo $fetch_inbox['email'];?>" class="form-control "> <br /> <br />
+                                      <b><label for="fromAdmin">From Admin</label></b><br />
+                                      <input type="text" readonly="" name="admin_name" value="<?php echo $first_name .' '. $last_name;?>" class="form-control "> <br /> <br />
+                                      <label for="message">Message</label><br />
+                                      <textarea name="reply_message_from_admin" class="form-control" rows="7" cols="80" ></textarea>
+
+                                      
+                                      <input type="hidden" name="student_id" value="<?php echo $fetch_inbox['student_id']?>">
+                                      <input type="submit" name="reply" class="btn btn-success" value="Send">
+                                  </form>
+                                      
+                                  </div>    
+                          </div>
+                          <div class="modal-footer">
+                          
+                            <button type="button" name= "read_unread" data-dismiss="modal" class="btn btn-primary pull-right">Close</button>
+                          
+                          </div>
+                        </div>
+                        <!-- /.modal-content -->
+                      </div>
+                      <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
+
+                  <a href="process_pages/message_process.php?message_id_delete=<?php echo $fetch_inbox['message_id']?>" class="btn btn-danger btn-sm" title="Delete" data-tooltip="tooltip"><i class="fa fa-trash"></i></a>
                   </td>
                 </tr>
 
@@ -218,6 +337,11 @@ desired effect
     <!-- Default to the left -->
     <strong>Copyright &copy; <?php echo date('Y');?><a href="#">Company</a>.</strong> All rights reserved.
   </footer>
+
+
+  <?php 
+  
+?>
 
  
 </div>
@@ -257,3 +381,5 @@ $connection->close();
 
 </body>
 </html>
+
+

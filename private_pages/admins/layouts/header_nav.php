@@ -11,7 +11,7 @@
             <li class="dropdown messages-menu">
             <a href="inbox.php">
               <i class="fa fa-envelope-o"></i>
-              <?php $count_messages = count_messages_for_this_admin($admin_id);
+              <?php $count_messages = count_inbox_for_admin();
                 while($messages = mysqli_fetch_assoc($count_messages))
                 {
                  $count_message =  $messages['messages'];

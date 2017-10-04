@@ -243,7 +243,7 @@ desired effect
 
                 <td><a  data-placement="left" data-tooltip ="tooltip" data-title="Add Student" href="students.php" ><span class='fa fa-user-plus'></span></a> |
                 <a  data-placement="left" data-tooltip ="tooltip" data-title="Add Professor" data-toggle="modal" data-target="#addProf<?php echo $section['tbl_section_id']?>"><span class='fa fa-user-plus'></span></a> 
-                <!--|<a  data-placement="left" data-tooltip ="tooltip" data-title="print data" href="print_process/print_class.php?department_id=<?php echo $section['department_id']?>&program_id=<?php echo $section['program_id']?>&yearlevel=<?php echo $section['yearlevel']?>&section_id=<?php echo $section['tbl_section_id'];?>" target="_blank" ><span class='fa  fa-print'></span></a>--></td>
+                |<a  data-placement="left" data-tooltip ="tooltip" data-title="print master list" href="print_process/print_class.php?department_id=<?php echo $section['department_id']?>&program_id=<?php echo $section['program_id']?>&yearlevel=<?php echo $section['yearlevel']?>&section_id=<?php echo $section['tbl_section_id'];?>" target="_blank" ><span class='fa  fa-print'></span></a></td>
 
               
                 </tr>

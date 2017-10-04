@@ -15,6 +15,10 @@
   });
 
 
+/* $(document).ready(function(){
+    $('#read_unread_message').modal('show');
+  });*/
+
 
 //datatables
   $(function () {

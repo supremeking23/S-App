@@ -1625,12 +1625,12 @@ function get_subject_for_this_tutorial($subject_id){
 }
 
 
-function get_all_messages_for_this_admin($admin_id){
+function get_all_messages_for_this_admin(){
      global $connection;
 
-      $admin_id = mysql_prep($admin_id);
+      //$admin_id = mysql_prep($admin_id);
 
-      $query = "SELECT  * FROM tblmessages WHERE reciever_id = '$admin_id'";
+      $query = "SELECT  * FROM tblmessage ORDER BY message_id DESC";
 
     
 
@@ -1639,12 +1639,29 @@ function get_all_messages_for_this_admin($admin_id){
     return $get_data;
 }
 
+
+/*
 function count_messages_for_this_admin($admin_id){
       global $connection;
 
       $admin_id = mysql_prep($admin_id);
 
       $query = "SELECT  COUNT(message_id) AS 'messages' FROM tblmessages WHERE reciever_id = '$admin_id' AND status ='not reply'AND reciever_type = 'admin' ORDER BY message_id desc";
+
+    
+
+      $get_data = $connection->query($query) or die(mysqli_error($connection));
+
+    return $get_data;
+}
+*/
+
+function count_inbox_for_admin(){
+  global $connection;
+
+      //$admin_id = mysql_prep($admin_id);
+
+      $query = "SELECT  COUNT(message_id) AS 'messages' FROM tblmessage WHERE status = '' ORDER BY message_id desc";
 
     
 

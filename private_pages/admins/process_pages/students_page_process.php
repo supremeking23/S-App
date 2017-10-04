@@ -30,7 +30,8 @@
 			        move_uploaded_file($students_profile_tmp, "../../student_images/$students_profile");
 
 
-			        $query_insert_students = "INSERT INTO tblstudentinfo (student_id,last_name,first_name,middle_name,gender,address,contact,date_birth,image,department,isActive,guardian_name,email,password,program_major) VALUES ('$student_id','$last_name','$first_name','$middle_name','$gender','$address','$contact','$date_birth','$students_profile','$department',1,'$guardian','$email','$guardian','$password','$program')";
+			        $query_insert_students = "INSERT INTO tblstudentinfo (student_id,last_name,first_name,middle_name,gender,address,contact,date_birth,image,department,isActive,guardian_name,email,password,program_major) VALUES 
+			        ('$student_id','$last_name','$first_name','$middle_name','$gender','$address','$contact','$date_birth','$students_profile','$department',1,'$guardian','$email','$password','$program')";
 
 			        $run_insert_students = mysqli_query($connection,$query_insert_students)or die(mysqli_error($connection));
 

@@ -305,7 +305,17 @@ desired effect
                       <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                         </button>
+                        
+                        <?php //if there is already an dept head
+                            $sql_check_dept = "SELECT * FROM tbldepartmentheads WHERE department_id = '$admin_department_id'";
+                            $run_check_dept = mysqli_query($connection,$sql_check_dept);
+
+                            if($run_check_dept){
+
+                            }else{
+                        ?>
                         <button type="button" class="btn btn-box-tool" data-toggle="modal" data-target="#addHead"><i class="fa fa-wrench"></i></button>
+                        <?php }//will remove the wrench?>
                         <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                       </div>
 
@@ -757,7 +767,7 @@ desired effect
                         <th>Program Name</th>
                         <th>Program Code</th>
                         <th>Program Description</th>
-                        <th>Edit Detail</th>
+                        <?php if($admin_department_id ==1):?><th>Edit Detail</th><?php endif?>
                       </tr>
                       </thead>
                       <tbody>
@@ -767,9 +777,9 @@ desired effect
                       ?>
                       <tr>
                         <td><?php echo $programs['program_name']?></td>
-                        <td><?php echo $programs['program_code']?></td>
+                        <td><?php echo $programs['program_code']?></td$admin_department_id ==1>:
                         <td><?php echo $programs['program_description']?></td>
-                        <td><a data-toggle='modal' data-tooltip="tooltip" data-placement="left" data-title="Edit Detail" data-target='#editDetail<?php echo $programs['program_id']?>' type="button" href="">Edit Detail</a></td>
+                        <td><?php if($admin_department_id ==1):?><a data-toggle='modal' data-tooltip="tooltip" data-placement="left" data-title="Edit Detail" data-target='#editDetail<?php echo $programs['program_id']?>' type="button" href="">Edit Detail</a><?php endif?></td>
                       </tr>
 
 
@@ -1251,7 +1261,7 @@ desired effect
               <div id="modalBody" class="modal-body">
                 <h4 id="modalTitle" class="modal-title"></h4>
                 <div id="modalWhen" style="margin-top:5px;">
-               
+               <div id="startTime"></div>
                 </div>
               </div>
               <input type="hidden" id="eventID"/>
@@ -1374,10 +1384,11 @@ $connection->close();
 
         eventClick:  function(event, jsEvent, view) {  // when some one click on any event
                // endtime = $.fullCalendar.moment(event.end).format('h:mm');
-                //starttime = $.fullCalendar.moment(event.start_time).format('dddd, MMMM Do YYYY, h:mm');
-                var mywhen = event.start + ' - ' + event.end;
+                start = $.fullCalendar.moment(event.start).format('dddd, MMMM Do YYYY');
+                start_time = $.fullCalendar.moment(event.start_time).format('h:mm');
+                var mywhen = start ;
                 $('#modalTitle').html(event.title);
-                $('#modalWhen').text();
+                $('#startTime').html(mywhen);
                 $('#eventID').val(event.id);
                 $('#calendarModal').modal();
             },
