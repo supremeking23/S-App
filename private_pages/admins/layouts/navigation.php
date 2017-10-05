@@ -5,7 +5,7 @@
         <div class="pull-left info">
           <p><?php echo limit_text($first_name . " " . $last_name,3); ?></p>
           <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> <?php echo $admin_department; ?></a>
+          <!--<a href="#"><i class="fa fa-circle text-success"></i> <?php echo $admin_department; ?></a> -->
         </div>
       </div>
 

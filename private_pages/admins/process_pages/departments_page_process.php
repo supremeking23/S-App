@@ -54,7 +54,7 @@
 		$department_id = $_POST['department'];
 		$program_code = $_POST['program_code'];
 		$program_name = $_POST['program_name'];
-		$program_description = $_POST['program_description'];
+		$program_description = mysql_prep($_POST['program_description']);
 
 		
 

@@ -246,7 +246,7 @@ desired effect
                           </div>
                           <p>Department Code</p>
                           <div class="form-group has-feedback">
-                            <input required=""  type="text" class="form-control" placeholder="Department Name" name="department_code">
+                            <input required=""  type="text" class="form-control" placeholder="Department Code" name="department_code">
                             <span class="glyphicon glyphicon-list form-control-feedback"></span>
                           </div>
 

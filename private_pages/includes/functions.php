@@ -584,12 +584,12 @@ function get_all_professors($department_id){
 }
 
 
-function get_all_professors_for_subjects(){
+function get_all_professors_for_subjects($department_id){
   global $connection;
 
  
-
-    $query = "SELECT  * FROM tblprofessor WHERE isActive = 1";
+    $department_id = mysql_prep($department_id);
+    $query = "SELECT  * FROM tblprofessor WHERE isActive = 1 AND department = '$department_id'";
   
 
   
@@ -1198,6 +1198,20 @@ function get_all_event_by_department_id($department_id){
      $program_id = mysql_prep($program_id);
      $department_id =mysql_prep($department_id);
       $query = "SELECT * FROM tblsection WHERE program_id = '$program_id' AND '$department_id' ";
+
+      $get_section = $connection->query($query) or die(mysqli_error($connection));
+
+      return $get_section;
+  }
+
+
+
+      function get_all_section_for_student_who_dont_have_section($department_id,$program_id){
+     global $connection;
+    
+     $program_id = mysql_prep($program_id);
+     $department_id =mysql_prep($department_id);
+      $query = "SELECT DISTINCT(section_name) FROM tblsection WHERE program_id = '$program_id' AND '$department_id' ";
 
       $get_section = $connection->query($query) or die(mysqli_error($connection));
 

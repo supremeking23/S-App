@@ -32,7 +32,7 @@
 
  		 if($password != $confirm_password){
               $_SESSION['failed_message'] = "password and confirm password doesnt match";
-			  redirect_to('admins.php');         	  
+			  redirect_to('../admins.php');         	  
             exit;
          }else{
          	  $admin_profile = $_FILES['upload_image']['name'];

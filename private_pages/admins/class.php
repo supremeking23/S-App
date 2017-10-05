@@ -275,7 +275,7 @@ desired effect
                             <select required=""  class="form-control" name="professor_id">
                             <option value="">Please choose a professor</option>
                               <?php //departments for student_use?>
-                               <?php $all_professor = get_all_professors_for_subjects();
+                               <?php $all_professor = get_all_professors_for_subjects($section['department_id']);
                                             while($professor = mysqli_fetch_assoc($all_professor)){
 
 

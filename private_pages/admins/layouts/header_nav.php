@@ -8,6 +8,8 @@
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
 
+            <!-- check to see if the admin is school admin -->
+            <?php if($admin_department_id == 1){?>
             <li class="dropdown messages-menu">
             <a href="inbox.php">
               <i class="fa fa-envelope-o"></i>
@@ -25,6 +27,11 @@
             </a>
            
           </li>
+
+       <?php }else{
+        //display none
+      }
+      ?>
 
            <!-- Notifications: style can be found in dropdown.less -->
          <!--   <li class="dropdown notifications-menu">

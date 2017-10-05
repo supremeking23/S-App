@@ -107,27 +107,74 @@
 
 
 		while($section_data = mysqli_fetch_assoc($run_get_sections)){
+			//for reference
+				$section_id = $section_data['tbl_section_id'];
+				$yearlevel_id = $section_data['yearlevel'];
+
+				    if($section_data['yearlevel']  == "1"){
+                      $roman_yearlevel = "I";
+                    }else if($section_data['yearlevel']  == "2"){
+                      $roman_yearlevel = "II";
+                    }else if($section_data['yearlevel']  == "3"){
+                      $roman_yearlevel = "III";
+                    }else if($section_data['yearlevel']  == "4"){
+                      $roman_yearlevel = "IV";
+                    }
+
 			
 			$wrapdf->SetFont('Arial','I',14);
-			$wrapdf->Cell(100,10,"Section: " . $section_data['yearlevel'] .' - '. $section_data['section_name'] ,0,1,"C");
+			$wrapdf->Cell(100,10,"Section: " . $roman_yearlevel.' - '. $section_data['section_name'] ,0,1,"C");
 			
 
 
 			$wrapdf->SetFont('Arial','B',10);
-		$wrapdf->Cell(70,10,"Subject",1,0,"C");
-		$wrapdf->Cell(90,10,"No. of Student who are in below average",1,0,"C");
-		$wrapdf->Cell(100,10,"No. of Student who are in above average",1,1,"C");
-		$wrapdf->Cell(70,10,"Program Logic Formulation",1,0,"C");
-
-		#random numbers for now
-		//
-		$random_below = rand(1,40);
-		$rand_above = rand(1,40);
-		$wrapdf->Cell(90,10,$random_below,1,0,"C");
-		$wrapdf->Cell(100,10,$rand_above,1,1,"C");
+		$wrapdf->Cell(60,10,"Subject",1,0,"C");
+		$wrapdf->Cell(50,10,"Professor",1,0,"C");
+		$wrapdf->Cell(80,10,"No. of Student who are in below average",1,0,"C");
+		$wrapdf->Cell(85,10,"No. of Student who are in above average",1,1,"C");
 		
-		$wrapdf->Ln(20);
-		}
+
+		//get data for subject and prof for this year and section
+
+		$get_subject = "SELECT * FROM tblprofessorsubject WHERE department_id ='$department_id' AND program_id ='$program_id' AND section_id = '$section_id' AND yearlevel = '$yearlevel_id'";
+		$run_get_subject = mysqli_query($connection,$get_subject);
+
+			while($get_subj_prof_id = mysqli_fetch_assoc($run_get_subject)){
+				$subject_id = $get_subj_prof_id['subject_id'];
+				$professor_table_id = $get_subj_prof_id['prof_id'];
+
+				//get subject_detail
+				$get_subject_detail = "SELECT * FROM tblsubjects WHERE subject_id = '$subject_id'";
+				$run_get_subject_detail = mysqli_query($connection,$get_subject_detail);
+				while($subject_detail = mysqli_fetch_assoc($run_get_subject_detail)){
+
+
+				$wrapdf->Cell(60,10,$subject_detail['subject_name'],1,0,"C");
+
+					//for professor
+					$get_prof_detail = "SELECT * FROM tblprofessor WHERE tbl_prof_id = '$professor_table_id'";
+					$run_get_prof_detail = mysqli_query($connection,$get_prof_detail);
+					while($professor_detail = mysqli_fetch_assoc($run_get_prof_detail)){
+						
+
+						$wrapdf->Cell(50,10,$professor_detail['first_name'] .' '. $professor_detail['last_name'] ,1,0,"C");
+
+
+					#random numbers for now
+					//
+					$random_below = rand(1,40);
+					$rand_above = rand(1,40);
+					$wrapdf->Cell(80,10,$random_below,1,0,"C");
+					$wrapdf->Cell(85,10,$rand_above,1,1,"C");
+					
+			
+
+
+					}//professor_detail
+				}//subject_detail
+			}// get_subj_prof_id
+			$wrapdf->Ln(20);
+		}//section end
 	
 	}//end fetching of section data
 

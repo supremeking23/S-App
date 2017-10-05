@@ -169,6 +169,8 @@ desired effect
                       $gender = $get_student_info['gender'];
                       $student_date_birth = $get_student_info['date_birth'];
                       $student_id = $get_student_info['student_id'];
+                      $student_yearlevel = $get_student_info['yearlevel'];
+                      $student_section =  $get_student_info['section'];
 
                     }
 
@@ -184,6 +186,37 @@ desired effect
                       $student_program_name = $student_program['program_name'];
                    }
 
+
+
+                   //get roman year
+                   //$section_name ="";
+                    if($student_yearlevel == "1"){
+                      $roman_yearlevel = "I";
+                    }else if($student_yearlevel == "2"){
+                      $roman_yearlevel = "II";
+                    }else if($student_yearlevel == "3"){
+                      $roman_yearlevel = "III";
+                    }else if($student_yearlevel == "4"){
+                      $roman_yearlevel = "IV";
+                    }else{
+                      $roman_yearlevel = "";
+                    }
+
+
+
+
+
+                    //get section name
+                      $get_section  = "SELECT * FROM tblsection WHERE tbl_section_id = '$student_section'";
+                      $run_get_section = mysqli_query($connection,$get_section) or die(mysqli_error($connection));
+
+                      while($section_data = mysqli_fetch_assoc($run_get_section)){
+                        $section_name = $section_data['section_name'];
+                      }
+
+                         if(empty($section_name)){
+                      $section_name = "";
+                    }
                   ?>
 
                     <img class="profile-user-img img-responsive img-circle" src="../student_images/<?php echo $student_image;?>" alt="User profile picture">
@@ -193,6 +226,8 @@ desired effect
                     <p class="text-muted text-center">Department: <?php echo  $student_dept_code; ?></p>
 
                      <p class="text-muted text-center">Program: <?php echo  $student_program_code;?></p>
+
+                     <p class="text-muted text-center">Year And Section: <?php echo $roman_yearlevel.' - '.$section_name;?></p>
 
                     <ul class="list-group list-group-unbordered">
                        <li class="list-group-item">

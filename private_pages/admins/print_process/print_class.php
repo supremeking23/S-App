@@ -90,7 +90,17 @@ if(mysqli_num_rows($run_query)>0){
 	$wrapdf->SetFont('Arial','I',14);
 	$wrapdf->Cell(0,2,"J.P. Rizal Extension, West Rembo, Makati City",0,1,"C");
 	$wrapdf->SetFont('Arial','I',14);
-	$wrapdf->Cell(0,20,"Student Master List for: " .$yearlevel. ' - '. $section_name,0,1,"C");
+	$roman_value_yearlevel ="";
+	if($yearlevel == "1"){
+		$roman_value_yearlevel = "I";
+	}else if($yearlevel =="2"){
+		$roman_value_yearlevel = "II";
+	}else if($yearlevel =="3"){
+		$roman_value_yearlevel = "III";
+	}else if($yearlevel =="4"){
+		$roman_value_yearlevel = "IV";
+	}
+	$wrapdf->Cell(0,20,"Student Master List for: " .$roman_value_yearlevel. ' - '. $section_name,0,1,"C");
 	
 	
 	$wrapdf->Ln(10);

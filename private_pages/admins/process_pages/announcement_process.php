@@ -8,9 +8,9 @@
 
   if (isset($_POST['postnew'])) {
 
-    $admin_id = $_POST['admin_id'];
-    $department_id = $_POST['department_id'];
-    $post_content = $_POST['post_content'];
+    $admin_id = mysql_prep($_POST['admin_id']);
+    $department_id =mysql_prep($_POST['department_id']);
+    $post_content = mysql_prep($_POST['post_content']);
 
 
     $query = "INSERT INTO tblannouncements(department_id,user_id,content,post_date) VALUES('$department_id','$admin_id','$post_content',now())";
@@ -25,7 +25,8 @@
          $date=date("l jS \of F Y ");
          $log_message = "Add Announcement at " . $date;
          $log_header = "Add Announcement";
-         insert_log($log_user_id,$log_header,$log_message);
+         $userlevel="admin";
+         insert_log($log_user_id,$log_header,$log_message,$userlevel);
          redirect_to("../index.php");
      }else{
       echo "wala";

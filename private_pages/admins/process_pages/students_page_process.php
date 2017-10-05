@@ -8,7 +8,7 @@
 
 <?php 
 		if(isset($_POST['register_student'])){
-			$student_id = 'A'. sprintf('%07d', mt_rand(1, 999999)); //auto 
+			$student_id = 'K'. sprintf('%07d', mt_rand(1, 999999)); //auto 
 			$last_name = $_POST['last_name'];
 			$first_name = $_POST['first_name'];
 			$middle_name = $_POST['middle_name'];
