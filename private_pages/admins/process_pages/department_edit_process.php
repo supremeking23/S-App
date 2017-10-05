@@ -65,7 +65,7 @@
 
   if(isset($_POST['update_dean'])){
       $first_name = mysql_prep($_POST['first_name']);
-      $middle_name = mysql_pre($_POST['middle_name']);
+      $middle_name = mysql_prep($_POST['middle_name']);
       $last_name = mysql_prep($_POST['last_name']);
       $email = mysql_prep($_POST['email']);
       $address = mysql_prep($_POST['address']);

@@ -307,11 +307,13 @@ desired effect
                         </button>
                         
                         <?php //if there is already an dept head
-                            $sql_check_dept = "SELECT * FROM tbldepartmentheads WHERE department_id = '$admin_department_id'";
-                            $run_check_dept = mysqli_query($connection,$sql_check_dept);
+                           /* $sql_check_dept = "SELECT * FROM tbldepartmentheads WHERE department_id = '".$_GET['department_id']."'";
+                            $run_check_dept = mysqli_query($connection,$sql_check_dept);*/
 
-                            if($run_check_dept){
+                            $dean_here = check_dean_by_department_id($_GET['department_id']);
 
+                            if(mysqli_num_rows($dean_here)){
+                              echo "";
                             }else{
                         ?>
                         <button type="button" class="btn btn-box-tool" data-toggle="modal" data-target="#addHead"><i class="fa fa-wrench"></i></button>
@@ -995,12 +997,42 @@ desired effect
                           ?>
                          <td>
 
-                         <a  data-toggle='modal' data-tooltip="tooltip" data-placement="left" data-title="Delete Information" data-target='#deletemodal' ><span class='glyphicon glyphicon-trash'></span></a> | <a  href="student_full_info.php?student_id=<?php echo $total_students['tbl_student_id'] ?>" ><span class='glyphicon glyphicon-user'></span></a>
+                         <a  data-toggle='modal' data-tooltip="tooltip" data-placement="left" data-title="Delete Information" data-target='#deletemodalStudent<?php echo $total_students['tbl_student_id'] ?>' ><span class='glyphicon glyphicon-trash'></span></a> | <a  href="student_full_info.php?student_id=<?php echo $total_students['tbl_student_id'] ?>" ><span class='glyphicon glyphicon-user'></span></a>
                          </td>
                       </tr>
 
                        <!-- for delete modal student -->
 
+                    <div class="modal modal-danger fade" id="deletemodalStudent<?php echo $total_students['tbl_student_id'] ?>">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                              <h4 class="modal-title">Access Confirmation</h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>Please Enter Your Password to continue</p>
+                               <form action="process_pages/delete_department_student_process.php" method="POST">
+
+                                 <input type="hidden" name="admin_id" value="<?php echo $admin_id ?>">  
+                                 <input type="hidden" name="delete_student" value="<?php echo $total_students['tbl_student_id'] ?>">
+                                <div class="form-group has-feedback">
+                                      <input type="password"   required="" class="form-control" placeholder="Password" name="admin_password">
+                                      <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                </div>
+                               
+                            </div>
+                            <div class="modal-footer">
+                              <input type="hidden" name="department_id" value="<?php echo $_GET['department_id'];?>">
+                              <button type="submit" name="student_delete" class="btn btn-outline">Save changes</button>
+                              </form>
+                            </div>
+                          </div>
+                          <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                      </div>
 
 
 

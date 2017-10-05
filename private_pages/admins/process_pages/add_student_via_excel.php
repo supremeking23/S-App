@@ -44,7 +44,7 @@
 			   $highestRow = $worksheet->getHighestRow();
 			   for($row=2; $row<=$highestRow; $row++){
 			    
-			    $student_id = 'A'. sprintf('%07d', mt_rand(1, 999999)); //auto 
+			    $student_id = 'K'. sprintf('%07d', mt_rand(1, 999999)); //auto 
 
 
 			    $last_name = mysqli_real_escape_string($connection, $worksheet->getCellByColumnAndRow(0, $row)->getValue());
@@ -67,8 +67,12 @@
 
 			     // $password =mysqli_real_escape_string($connection, $worksheet->getCellByColumnAndRow(8, $row)->getValue()); 
 
+			         /*$temp_profile = $_FILES['upload_image']['name'];
+		    		 $_profile_tmp =$_FILES['upload_image']['tmp_name'];
+		   			 move_uploaded_file($admin_profile_tmp, "../admin_images/$admin_profile");*/
+		   			 $image_temp = "guest2.jpg";
 
-			    $query = "INSERT INTO tblstudentinfo(student_id,last_name,first_name,middle_name,address,contact,date_birth,department,isActive,program_major,guardian_name,email,gender,password) VALUES ('$student_id','$last_name','$first_name','$middle_name','$address','$contact','$date_birth','$department',1,'$program','$guardian_name','$email','$gender','$password')";
+			    $query = "INSERT INTO tblstudentinfo(student_id,last_name,first_name,middle_name,address,contact,date_birth,department,isActive,program_major,guardian_name,email,gender,password,image) VALUES ('$student_id','$last_name','$first_name','$middle_name','$address','$contact','$date_birth','$department',1,'$program','$guardian_name','$email','$gender','$password','$image_temp')";
 			    	$success = mysqli_query($connection, $query)or die(mysqli_error($connection));
 
 

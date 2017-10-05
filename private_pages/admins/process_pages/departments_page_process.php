@@ -38,7 +38,8 @@
 				$log_user_id = $_SESSION['admin_id'];
 	            $log_message = "Add Department at " . $date;
 	            $log_header = "Add Department";
-	            insert_log($log_user_id,$log_header,$log_message);
+	            $userlevel="admin";
+	            insert_log($log_user_id,$log_header,$log_message,$userlevel);
                 redirect_to('../add_department_and_programs.php');
 			}
 
@@ -69,7 +70,8 @@
 				$date=date("l jS \of F Y ");
 	            $log_message = "Add College Program at " . $date;
 	            $log_header = "Add College Program";
-	            insert_log($log_user_id,$log_header,$log_message);
+	              $userlevel="admin";
+	            insert_log($log_user_id,$log_header,$log_message,$userlevel);
                 redirect_to('../add_department_and_programs.php');
 			}
 
