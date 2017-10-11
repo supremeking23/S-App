@@ -24,6 +24,9 @@
 			if($run_query_change_email && mysqli_affected_rows($connection) == 1){
 				$_SESSION['success_message'] = "Email has been updated";
                 redirect_to('../admin_profile.php');
+			}else{
+				$_SESSION['success_message'] = "Email has been updated";
+                redirect_to('../admin_profile.php');
 			}
 
 		}else{
@@ -50,6 +53,9 @@
 					$run_query_change_password = mysqli_query($connection,$query_change_password)or die(mysqli_error($connection));
 
 					if($run_query_change_password && mysqli_affected_rows($connection) == 1){
+							$_SESSION['success_message'] = "Password has been updated";
+			                redirect_to('../admin_profile.php');
+						}else{
 							$_SESSION['success_message'] = "Password has been updated";
 			                redirect_to('../admin_profile.php');
 						}

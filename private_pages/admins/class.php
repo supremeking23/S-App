@@ -36,6 +36,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="shortcut icon" href="../images/logo.png">
   <title>S-APP | Admin</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -261,9 +262,19 @@ desired effect
                       </div>
                       <div class="modal-body">
 
+                        <?php 
+                           if($section['yearlevel']  == "1"){
+                              $roman_yearlevel = "I";
+                            }else if($section['yearlevel']  == "2"){
+                              $roman_yearlevel = "II";
+                            }else if($section['yearlevel']  == "3"){
+                              $roman_yearlevel = "III";
+                            }else if($section['yearlevel']  == "4"){
+                              $roman_yearlevel = "IV";
+                            }
+                        ?>
 
-
-                        <h2>Class: <small><?php echo $section['yearlevel']?> - <?php echo $section['section_name']?></small></h2>
+                        <h2>Class: <small><?php echo $roman_yearlevel;?> - <?php echo $section['section_name']?></small></h2>
 
 
                        

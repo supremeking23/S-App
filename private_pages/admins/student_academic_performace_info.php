@@ -36,6 +36,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="shortcut icon" href="../images/logo.png">
   <title>S-APP | Admin</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -293,7 +294,7 @@ desired effect
 
                     <!--fetch midterm grade -->
                   <?php 
-                     $get_midterm_grade_data = get_midterm_grade_for_student($fetch_data['prof_id'],$student_dept_id,$fetch_data['subject_id']);
+                     $get_midterm_grade_data = get_midterm_grade_for_student($fetch_data['prof_id'],$tbl_student_id,$fetch_data['subject_id']);
                      if(mysqli_num_rows($get_midterm_grade_data)){
                      while($fetch_mid_grade_data = mysqli_fetch_assoc($get_midterm_grade_data)):
                   ?>
@@ -302,12 +303,12 @@ desired effect
                    <?php endwhile; //  (get_midterm_grade_for_student)?>
                   <?php } else{ ?>
 
-                  <td>N/A</td>
+                  <td>N/A <!--<a href="index.php?prof_id=<?php echo $fetch_data['prof_id']?>&dept_id=<?php echo $student_dept_id?>&subject_id=<?php echo $fetch_data['subject_id']?>">test</a>--></td>
                   <?php }?>
 
                        <!--fetch midterm evaluation -->
                   <?php 
-                     $get_midterm_evaluation_data = get_midterm_evaluation_for_student($fetch_data['prof_id'],$student_dept_id,$fetch_data['subject_id']);
+                     $get_midterm_evaluation_data = get_midterm_evaluation_for_student($fetch_data['prof_id'],$tbl_student_id,$fetch_data['subject_id']);
                      if(mysqli_num_rows($get_midterm_evaluation_data)){
                      while($fetch_mid_evaluation_data = mysqli_fetch_assoc($get_midterm_evaluation_data)):
                   ?>
@@ -321,11 +322,11 @@ desired effect
 
                        <!--fetch final grade -->
                   <?php 
-                     $get_final_grade_data = get_finals_grade_for_student($fetch_data['prof_id'],$student_dept_id,$fetch_data['subject_id']);
+                     $get_final_grade_data = get_finals_grade_for_student($fetch_data['prof_id'],$tbl_student_id,$fetch_data['subject_id']);
                      if(mysqli_num_rows($get_final_grade_data)){
                      while($fetch_final_grade_data = mysqli_fetch_assoc($get_final_grade_data)):
                   ?>
-                  <td> <?php echo $fetch_mid_grade_data['final_grade'];?> </td>
+                  <td> <?php echo $fetch_final_grade_data['final_grade'];?> </td>
                     
                    <?php endwhile; //  (get_final_grade_for_student)?>
                   <?php } else{ ?>
@@ -335,7 +336,7 @@ desired effect
 
                        <!--fetch final evaluation -->
                   <?php 
-                     $get_final_evaluation_data = get_finals_evaluation_for_student($fetch_data['prof_id'],$student_dept_id,$fetch_data['subject_id']);
+                     $get_final_evaluation_data = get_finals_evaluation_for_student($fetch_data['prof_id'],$tbl_student_id,$fetch_data['subject_id']);
                      if(mysqli_num_rows($get_final_evaluation_data)){
                      while($fetch_final_evaluation_data = mysqli_fetch_assoc($get_final_evaluation_data)):
                   ?>

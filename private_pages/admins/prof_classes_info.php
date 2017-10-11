@@ -36,6 +36,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="shortcut icon" href="../images/logo.png">
   <title>S-APP | Admin</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -189,11 +190,11 @@ desired effect
                        <li class="list-group-item">
                         <b>Professor ID:</b> <a class="pull-right"><?php echo $prof_id?></a>
                       </li>
-                      <li class="list-group-item">
+                      <!-- <li class="list-group-item">
                         <?php $date =date_create($date_added);
                          $prof_since= date_format($date,"F  Y ");?>
                         <b>Admin since:</b> <a class="pull-right"><?php echo $prof_since?></a>
-                      </li>
+                      </li> -->
                       <li class="list-group-item">
                         <b>Gender</b> <a class="pull-right"><?php echo $gender;?></a>
                       </li>

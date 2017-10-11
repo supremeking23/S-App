@@ -1206,12 +1206,12 @@ function get_all_event_by_department_id($department_id){
 
 
 
-      function get_all_section_for_student_who_dont_have_section($department_id,$program_id){
+    function get_all_section_for_student_who_dont_have_section($department_id,$program_id){
      global $connection;
     
      $program_id = mysql_prep($program_id);
      $department_id =mysql_prep($department_id);
-      $query = "SELECT DISTINCT(section_name) FROM tblsection WHERE program_id = '$program_id' AND '$department_id' ";
+      $query = "SELECT * FROM tblsection WHERE program_id = '$program_id' AND '$department_id' ";
 
       $get_section = $connection->query($query) or die(mysqli_error($connection));
 
@@ -1683,6 +1683,39 @@ function count_inbox_for_admin(){
 
     return $get_data;
 }
+
+
+
+function count_reply_message($student_id_var){
+  global $connection;
+
+      $student_id_var = mysql_prep($student_id_var);
+
+      $query = "SELECT  COUNT(reply_id) AS 'reply_messages' FROM tblreplymessage WHERE status = '' AND student_id ='$student_id_var' ORDER BY reply_id desc";
+
+    
+
+      $get_data = $connection->query($query) or die(mysqli_error($connection));
+
+    return $get_data;
+}
+
+
+
+function get_all_reply_messages_for_this_student($student_id_var){
+     global $connection;
+
+       $student_id_var = mysql_prep($student_id_var);
+
+      $query = "SELECT  * FROM tblreplymessage WHERE student_id = '$student_id_var' ORDER BY reply_id DESC";
+
+    
+
+      $get_data = $connection->query($query) or die(mysqli_error());
+
+    return $get_data;
+}
+
 
 function open_encode_of_grade(){
    global $connection;

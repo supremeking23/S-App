@@ -11,10 +11,10 @@
             <li class="dropdown messages-menu">
             <a href="inbox.php">
               <i class="fa fa-envelope-o"></i>
-              <?php $count_messages = count_messages_for_this_admin($tbl_student_id);
+              <?php $count_messages = count_reply_message($student_id);
                 while($messages = mysqli_fetch_assoc($count_messages))
                 {
-                 $count_message =  $messages['messages'];
+                 $count_message =  $messages['reply_messages'];
                 }
               ?>
               <span class="label label-success"><?php 

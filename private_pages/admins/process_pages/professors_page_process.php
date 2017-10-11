@@ -23,7 +23,7 @@
 
 			 if($password != $confirm_password){
               $_SESSION['failed_message'] = "password and confirm password doesnt match";
-			  redirect_to('professors.php');         	  
+			  redirect_to('../professors.php');         	  
 	            exit;
 	         }else{
 

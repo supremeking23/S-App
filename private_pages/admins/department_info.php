@@ -36,6 +36,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="shortcut icon" href="../images/logo.png">
   <title>S-APP | Admin</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -779,7 +780,7 @@ desired effect
                       ?>
                       <tr>
                         <td><?php echo $programs['program_name']?></td>
-                        <td><?php echo $programs['program_code']?></td$admin_department_id ==1>:
+                        <td><?php echo $programs['program_code']?></td>
                         <td><?php echo $programs['program_description']?></td>
                         <td><?php if($admin_department_id ==1):?><a data-toggle='modal' data-tooltip="tooltip" data-placement="left" data-title="Edit Detail" data-target='#editDetail<?php echo $programs['program_id']?>' type="button" href="">Edit Detail</a><?php endif?></td>
                       </tr>
@@ -1188,7 +1189,8 @@ desired effect
                             <td>
                              
                               <a href="<?php echo $fetch_tutorial['tutorial_asset'];?>" target="_blank">View</a>
-                               
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              <a href="process_pages/delete_tutorial.php?delete_tutorial_id=<?php echo $fetch_tutorial['tutorial_id']?>&department_id=<?php echo $_GET['department_id'];?>">Delete</a>
                             </td>
                         </tr>
                         <?php endwhile;//get_all_tutorials_by_department_id ?>

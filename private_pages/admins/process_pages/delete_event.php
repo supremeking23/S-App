@@ -19,7 +19,8 @@
                  $date=date("l jS \of F Y ");
                  $log_message = "Delete Event at " . $date;
                  $log_header = "Delete Event";
-                 insert_log($log_user_id,$log_header,$log_message);
+                 $userlevel = "admin";
+                  insert_log($log_user_id,$log_header,$log_message,$userlevel);
                  redirect_to("../all_events.php");
               }else{
                 
@@ -39,7 +40,8 @@
                  $date=date("l jS \of F Y ");
                  $log_message = "Delete Event at " . $date;
                  $log_header = "Delete Event";
-                 insert_log($log_user_id,$log_header,$log_message);
+                  $userlevel = "admin";
+                  insert_log($log_user_id,$log_header,$log_message,$userlevel);
                  redirect_to("../all_events.php");
               }else{
                 

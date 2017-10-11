@@ -45,7 +45,7 @@
           <li><a href="students.php"><i class="glyphicon glyphicon-user"></i> <span>Students</span></a></li>
            
           <?php if($admin_department_id != 1): //for admin print report?>
-            <li><a href="print_process/department_admin_report.php?department_id=<?php echo $admin_department_id?>"><i class="fa fa-object-group" target="_blank"></i><span> Department Admin Report</span></a></li>
+            <li><a href="print_process/department_admin_report.php?department_id=<?php echo $admin_department_id?>"><i class="fa fa-object-group" target="_blank"></i><span> Student Report</span></a></li>
           <?php endif;?>
        </ul>
 

@@ -21,6 +21,7 @@
              $middle_name = $student['middle_name'];
              $image = $student['image'];
              $student_department = $student['department'];
+             $student_id = $student['student_id'];
 
            }
 

@@ -36,6 +36,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="shortcut icon" href="../images/logo.png">
   <title>S-APP | Admin</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -364,31 +365,38 @@ desired effect
                               <form action="process_pages/add_section_year_process.php" method="POST">
                                 
 
-                                  <p>Year</p>
+                                  <p>Year and Section</p>
                                   <div class="form-group has-feedback">
-                                      <select required=""  class="form-control" name="year">
+                                      <select required=""  class="form-control" name="year_section">
                                         <?php //year?>
-                                         <?php $get_year = get_all_year();
+                                         <?php $get_year = get_all_section_for_student_who_dont_have_section($total_students['department'],$total_students['program_major']);
                                                       while($year = mysqli_fetch_assoc($get_year)){
                                                         ?>
-                                                     <option value="<?php echo $year['tbl_yearlevel_id']?>"><?php echo $year['yearlevel'] ?></option>
+                                                     <option value="<?php echo $year['tbl_section_id']?>">
+                                                      
+                                                      <?php 
+                                                        $year_roman = "";
+                                                        if($year['yearlevel'] == 1){
+                                                          $year_roman = "I";
+                                                        }else if($year['yearlevel'] == 2){
+                                                          $year_roman = "II";
+                                                        }else if($year['yearlevel'] == 3){
+                                                          $year_roman = "III";
+                                                        }else if($year['yearlevel'] == 4){
+                                                          $year_roman = "IV";
+                                                        }
 
-                                          <?php }?>
-                                      </select>
-                                    </div>
-
-                                      <p>Section</p>
-                                  <div class="form-group has-feedback">
-                                      <select required=""  class="form-control" name="section">
-                                        <?php //section?>
-                                         <?php $all_section = get_all_section($total_students['department'],$total_students['program_major']);
-                                                      while($section = mysqli_fetch_assoc($all_section)){
                                                         ?>
-                                                     <option value="<?php echo $section['tbl_section_id']?>"><?php echo $section['section_name'] ?> </option>
+                                                        
+
+                                                        <?php echo $year_roman .' - '. $year['section_name'];?>
+                                                      </option>
 
                                           <?php }?>
                                       </select>
                                     </div>
+
+                                
                               
                               
                             </div>

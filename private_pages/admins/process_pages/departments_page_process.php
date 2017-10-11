@@ -80,7 +80,7 @@
  	}
 
 
-
+ 	//hayaan nalang
  	if(isset($_SESSION['q'])){
  		$_SESSION["failed_message"]="iadsd";
  		redirect_to('login.php');

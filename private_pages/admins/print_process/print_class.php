@@ -30,6 +30,7 @@
 	while($department_data = mysqli_fetch_assoc($run_get_department)){
 
 		$department_logo = $department_data['department_logo'];
+		$department_name = $department_data['department_name'];
 		//$yearlevel_data = $department_data['yearlevel'];
 	}//end fetching of department data
 
@@ -100,6 +101,10 @@ if(mysqli_num_rows($run_query)>0){
 	}else if($yearlevel =="4"){
 		$roman_value_yearlevel = "IV";
 	}
+
+	$wrapdf->SetFont('Arial','B',16);
+	$wrapdf->Cell(0,20,$department_name,0,1,"C");
+
 	$wrapdf->Cell(0,20,"Student Master List for: " .$roman_value_yearlevel. ' - '. $section_name,0,1,"C");
 	
 	
@@ -148,8 +153,9 @@ if(mysqli_num_rows($run_query)>0){
 	
 	}
 
-
-	$wrapdf->Output();
+	//filename
+	$class_name ="Student Master List for: " .$roman_value_yearlevel. ' - '. $section_name. '.pdf';
+	$wrapdf->Output($class_name,'I');
 }else{
 	$_SESSION['failed_message'] = "No Data Found";
 	redirect_to("../class.php");

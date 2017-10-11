@@ -162,12 +162,32 @@
 
 					#random numbers for now
 					//
-					$random_below = rand(1,40);
+
+
+					//refer to the final grade
+					//count the number of student how is below 85 for finals
+
+
+					$get_below_average = "SELECT COUNT(*) AS 'below_ave' FROM tblstudentsubjects WHERE final_grade < 85 AND subject_id = '$subject_id'";
+					$run_get_below_average = mysqli_query($connection,$get_below_average);
+
+					while($below_detail = mysqli_fetch_assoc($run_get_below_average)){
+						$wrapdf->Cell(80,10,$below_detail['below_ave'],1,0,"C");
+					}
+					/*$random_below = rand(1,40);
 					$rand_above = rand(1,40);
 					$wrapdf->Cell(80,10,$random_below,1,0,"C");
-					$wrapdf->Cell(85,10,$rand_above,1,1,"C");
+					$wrapdf->Cell(85,10,$rand_above,1,1,"C"); */
 					
-			
+					
+
+					$get_above_average = "SELECT COUNT(*) AS 'above_ave' FROM tblstudentsubjects WHERE final_grade >= 85 AND subject_id = '$subject_id'";
+					$run_get_above_average = mysqli_query($connection,$get_above_average);
+
+					while($above_detail = mysqli_fetch_assoc($run_get_above_average)){
+						$wrapdf->Cell(85,10,$above_detail['above_ave'],1,1,"C");
+					}
+
 
 
 					}//professor_detail
@@ -240,8 +260,8 @@
 
 	*/
 
-
-	$wrapdf->Output();
+	$filename = "Summary Report for " .$department_name. ".pdf";
+	$wrapdf->Output($filename,"I");
 
 	
 ?>
