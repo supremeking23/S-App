@@ -764,7 +764,7 @@ desired effect
                     <!-- /.box-header -->
 
                   <div class="box-body">
-                    <table  class="table table-bordered table-striped datatable">
+                    <table  class="table table-bordered table-striped  <?php if($admin_department_id ==1):?>datatable<?php endif;?>">
                       <thead>
                       <tr>
                         <th>Program Name</th>
@@ -914,7 +914,7 @@ desired effect
                             </div>
                             <div class="modal-footer">
                               <input type="hidden" name="department_id" value="<?php echo $_GET['department_id'];?>">
-                              <button type="submit" name="prof_delete" class="btn btn-outline">Save changes</button>
+                              <button type="submit" name="prof_delete" class="btn btn-outline">Delete</button>
                               </form>
                             </div>
                           </div>
@@ -1026,7 +1026,7 @@ desired effect
                             </div>
                             <div class="modal-footer">
                               <input type="hidden" name="department_id" value="<?php echo $_GET['department_id'];?>">
-                              <button type="submit" name="student_delete" class="btn btn-outline">Save changes</button>
+                              <button type="submit" name="student_delete" class="btn btn-outline">Delete</button>
                               </form>
                             </div>
                           </div>

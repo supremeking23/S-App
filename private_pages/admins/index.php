@@ -319,7 +319,7 @@ desired effect
                                   <input type="hidden" name="announcement_id" value="<?php echo $announcement['announcement_id'];?>">
                                   <input type="hidden" name="admin_id" value="<?php echo $admin_id;?>">
                                   <input type="hidden" name="department_id" value="<?php echo $admin_department_id;?>">
-                                  <input type="text" class="form-control" name="password"><br />
+                                  <input type="password" class="form-control" name="password"><br />
                                  <button type="submit" class="btn btn-danger pull-right" name="delete_announcement">Delete</button>
                                  <div style="clear: both;"></div>
                             </form>

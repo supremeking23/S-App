@@ -56,7 +56,8 @@
            $date=date("l jS \of F Y ");
            $log_message = "Delete Announcement at " . $date;
            $log_header = "Delete Announcement";
-           insert_log($log_user_id,$log_header,$log_message);
+           $userlevel="admin";
+         insert_log($log_user_id,$log_header,$log_message,$userlevel);
            redirect_to("../index.php");
        }
     
