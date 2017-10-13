@@ -208,7 +208,7 @@ desired effect
                         <b>Age:</b> <a class="pull-right"><?php echo $age;?></a>
                       </li>
                     </ul>
-                    <a href="professor_full_info.php?professor_id=<?php echo $_GET['professor_id']?>" class="btn btn-primary btn-block"><b>Bact to Log History</b></a> 
+                      <a href="prof_edit_info.php?professor_id=<?php echo $_GET['professor_id']?>" class="btn btn-primary btn-block"><b>Edit Information</b></a> 
                   </div>
                   <!-- /.box-body -->
                 </div>

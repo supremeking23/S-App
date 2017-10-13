@@ -272,7 +272,7 @@ desired effect
                     ?>
                    
 
-                    <td><a  data-toggle='modal' data-tooltip="tooltip" data-placement="left" data-title="Delete Information" data-target='#deletemodal<?php echo $total_students['tbl_student_id'] ?>' ><span class='glyphicon glyphicon-trash'></span></a> | <a  href="student_full_info.php?student_id=<?php echo $total_students['tbl_student_id']; ?>" ><span class='glyphicon glyphicon-user'></span></a>
+                    <td><a  data-toggle='modal' data-tooltip="tooltip" data-placement="left" data-title="Delete Information" data-target='#deletemodal<?php echo $total_students['tbl_student_id'] ?>' ><span class='glyphicon glyphicon-trash'></span></a> | <a  href="student_academic_performace_info.php?student_id=<?php echo $total_students['tbl_student_id']; ?>"  data-tooltip="tooltip" data-placement="left" data-title="View Academic Performance"><span class='glyphicon glyphicon-user'></span></a>
 
                     <?php if($total_students['section'] == "0"){ ?>
                      | <a  data-toggle='modal' data-tooltip="tooltip" data-placement="left" data-title="Add Section to this student" data-target='#addSectonModal<?php echo $total_students['tbl_student_id'] ?>' ><span class='fa fa-exclamation-circle'></span></a>

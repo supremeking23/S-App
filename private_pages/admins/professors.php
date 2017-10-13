@@ -193,7 +193,7 @@ desired effect
                     ?>
                   
 
-                    <td><a  data-toggle='modal' data-tooltip="tooltip" data-placement="left" data-title="Delete Information" data-target='#deletemodal<?php echo $total_professors['tbl_prof_id'] ?>' ><span class='glyphicon glyphicon-trash'></span></a> | <a  href="professor_full_info.php?professor_id=<?php echo $total_professors['tbl_prof_id']; ?>" ><span class='glyphicon glyphicon-user'></span></a></td>
+                    <td><a  data-toggle='modal' data-tooltip="tooltip" data-placement="left" data-title="Delete Information" data-target='#deletemodal<?php echo $total_professors['tbl_prof_id'] ?>' ><span class='glyphicon glyphicon-trash'></span></a> | <a  href="prof_classes_info.php?professor_id=<?php echo $total_professors['tbl_prof_id']; ?>" data-tooltip="tooltip" data-placement="left" data-title="View Professors Classes"><span class='glyphicon glyphicon-user'></span></a></td>
                 </tr>
 
 

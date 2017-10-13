@@ -249,8 +249,9 @@ desired effect
                       </li>
                     </ul>
 
-                    <a href="student_full_info.php?student_id=<?php echo $_GET['student_id']?>" class="btn btn-primary btn-block"><b>Back to Log History</b></a> 
-                   
+                    <!--<a href="student_full_info.php?student_id=<?php echo $_GET['student_id']?>" class="btn btn-primary btn-block"><b>Back to Log History</b></a> 
+                    -->
+                     <a href="student_academic_performace_info.php?student_id=<?php echo $_GET['student_id']?>" class="btn btn-success btn-block"><b>Student Academic Performance</b></a> 
                   </div>
                   <!-- /.box-body -->
                 </div>

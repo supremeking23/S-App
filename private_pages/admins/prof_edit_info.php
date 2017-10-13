@@ -209,7 +209,7 @@ desired effect
                       </li>
                     </ul>
 
-                    <a href="professor_full_info.php?professor_id=<?php echo $_GET['professor_id']?>" class="btn btn-primary btn-block"><b>Bact to Log History</b></a> 
+                    <a href="prof_classes_info.php?professor_id=<?php echo $_GET['professor_id']?>" class="btn btn-warning btn-block"><b>Professor's Classes</b></a> 
                    
                   </div>
                   <!-- /.box-body -->

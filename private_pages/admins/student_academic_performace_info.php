@@ -193,6 +193,34 @@ desired effect
                       $student_program_name = $student_program['program_name'];
                    }
 
+
+                    //get roman year
+                   //$section_name ="";
+                    if($yearlevel == "1"){
+                      $roman_yearlevel = "I";
+                    }else if($yearlevel == "2"){
+                      $roman_yearlevel = "II";
+                    }else if($yearlevel == "3"){
+                      $roman_yearlevel = "III";
+                    }else if($yearlevel == "4"){
+                      $roman_yearlevel = "IV";
+                    }else{
+                      $roman_yearlevel = "";
+                    }
+
+
+
+                     //get section name
+                      $get_section  = "SELECT * FROM tblsection WHERE tbl_section_id = '$section'";
+                      $run_get_section = mysqli_query($connection,$get_section) or die(mysqli_error($connection));
+
+                      while($section_data = mysqli_fetch_assoc($run_get_section)){
+                        $section_name = $section_data['section_name'];
+                      }
+
+                         if(empty($section_name)){
+                      $section_name = "";
+                    }
                   ?>
 
                     <img class="profile-user-img img-responsive img-circle" src="../student_images/<?php echo $student_image;?>" alt="User profile picture">
@@ -203,6 +231,8 @@ desired effect
 
                      <p class="text-muted text-center">Program: <?php echo  $student_program_code;?></p>
 
+                      <p class="text-muted text-center">Year And Section: <?php echo $roman_yearlevel.' - '.$section_name;?></p>
+                      
                     <ul class="list-group list-group-unbordered">
                        <li class="list-group-item">
                         <b>Student ID:</b> <a class="pull-right"><?php echo $student_id?></a>
@@ -222,8 +252,10 @@ desired effect
                       </li>
                     </ul>
 
-                    <a href="student_full_info.php?student_id=<?php echo $_GET['student_id']?>" class="btn btn-primary btn-block"><b>Back to Log History</b></a> 
-                   
+                   <!-- <a href="student_full_info.php?student_id=<?php echo $_GET['student_id']?>" class="btn btn-primary btn-block"><b>Back to Log History</b></a> 
+                    -->
+
+                      <a href="student_edit_info.php?student_id=<?php echo $_GET['student_id']?>" class="btn btn-primary btn-block"><b>Edit Information</b></a> 
                   </div>
                   <!-- /.box-body -->
                 </div>

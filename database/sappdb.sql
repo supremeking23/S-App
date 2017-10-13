@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2017 at 04:06 AM
+-- Generation Time: Oct 13, 2017 at 07:11 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -68,8 +68,8 @@ INSERT INTO `tbladmins` (`admin_id`, `admin_department_id`, `last_name`, `first_
 (8, 12, 'Allen', 'Bartholomew Henry', 'West', 'New Found Glory Taguig City', '20.jpeg', '09831238768', '1990-06-12', 'barryallen@gmail.com', 'barry', 'Male', 1, '0000-00-00'),
 (9, 14, 'Reyes', 'Rowena', 'Alcantara', 'Makati City', 'finalstudents.jpg', '09831238768', '1982-02-09', 'rowenareyes@gmail.com', 'rowena', 'Female', 1, '0000-00-00'),
 (10, 15, 'Rivera', 'Marian', 'Meniano', '520-B 16th ISU Village Barangay 31 South Side', 'students.jpg', '09831238761', '1995-09-12', 'marianmenrivera@gmail.com', 'marian', 'Male', 1, '0000-00-00'),
-(11, 16, 'Ferrer', 'Milagros', 'Asuncion', 'Davao Street Paraniaque', 'user5-128x128.jpg', '09831238768', '1980-05-19', 'milaferrer@gmail.com', 'mila', 'Female', 1, '0000-00-00'),
-(12, 16, 'Newsome', 'Cristopher', 'Alexis', 'New Manila', 'avatar04.png', '09831238768', '1990-06-19', 'chrisnewsome@gmail.com', 'chrisnewsome', 'Male', 1, '0000-00-00');
+(11, 16, 'Ferrer', 'Milagros', 'Asuncion', 'Davao Street Paraniaque', 'user5-128x128.jpg', '09831238768', '1980-05-19', 'milaferrer@gmail.com', 'mila', 'Female', 0, '0000-00-00'),
+(12, 16, 'Newsome', 'Cristopher', 'Alexis', 'New Manila', 'avatar04.png', '09831238768', '1990-06-19', 'chrisnewsome@gmail.com', 'chrisnewsome', 'Male', 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -122,8 +122,7 @@ INSERT INTO `tblcollegeprograms` (`program_id`, `department_id`, `program_name`,
 (8, 12, 'INFORMATION TECHNOLOGY SERVICE MANAGEMENT', 'ITSM', '<p>This program is a 4 years program offered by the college of computer science</p><p><br></p>'),
 (9, 12, 'Bachelor of Science in Computer Network Administration', 'BSCS Net Admin', '<p>this program is a 4 year\'s program offered by the CCS</p><p><br></p>'),
 (10, 14, 'Bachelor of Science in Business Administration Major in Supply Management', 'BSCS Supply Management', '<p>4 year course</p>'),
-(11, 15, ' Bachelor of Science in Building Technology Management', 'BSBTM', '<blockquote><p>4 year\'s program offered by the college of CTM</p></blockquote>'),
-(12, 16, 'Bachelor of Science in Nursing', 'BS Nursing', '<p>lorem ipsum delor</p>');
+(11, 15, ' Bachelor of Science in Building Technology Management', 'BSBTM', '<blockquote><p>4 year\'s program offered by the college of CTM</p></blockquote>');
 
 -- --------------------------------------------------------
 
@@ -196,8 +195,7 @@ INSERT INTO `tbldepartments` (`department_id`, `department_code`, `department_na
 (1, 'SCHOOL-ADMIN', 'SCHOOL-ADMIN', '', '', '#0073b7', '', ''),
 (12, 'CCS', 'College of Computer Sciences', 'Logo1.png', 'engineer banner.png', '#004080', '<p>Guided by its vision of commitment, the College shall provide a competitive, relevant, and functional information technology education curriculum responsive to the needs of the industrial and business organizations of the locality.s<br></p>', '<p>The College of Computer Science envisions an Information Technology Education Institution committed to the development and adequate utilization and applications of information technology.s<br></p>'),
 (14, 'CBA', 'College of Business Administration', 'marketing.png', 'accounting.png', '#ff0000', '<blockquote><p>The CBA will develop and implement curricular programs that are market-driven, job-specific and practitioner-based, maintaining strategic alliance with business and industry for the professional development of competent, socially responsible students whose knowledge, attitude and skills are geared towards entrepreneurial and employment opportunities in the marketplace.</p></blockquote>', '<blockquote><p>The CBA will be at the mainstream of human resource development promoting strategic, innovative and competitive business programs relevant to the needs of the individual, the community and the Philippine society.</p></blockquote>'),
-(15, 'CTM', 'College of Engineering and Technology Management', 'architecture.png', 'architecturebanner.jpg', '#804040', '<blockquote><p>We Mold Graduates with Character and Competence Fit for Technology Management at National Certification Standard NC III or Higher</p></blockquote>', '<blockquote><p>We will strive to attain the Level IV Standard of Classification for the CETM Faculty and Facilities over a Three-Year Period</p></blockquote>'),
-(16, 'COAHS', 'COLLEGE OF ALLIED HEALTH STUDIES', 'science.png', 'scienceBanner.jpg', '#408080', '', '');
+(15, 'CTM', 'College of Engineering and Technology Management', 'architecture.png', 'architecturebanner.jpg', '#804040', '<blockquote><p>We Mold Graduates with Character and Competence Fit for Technology Management at National Certification Standard NC III or Higher</p></blockquote>', '<blockquote><p>We will strive to attain the Level IV Standard of Classification for the CETM Faculty and Facilities over a Three-Year Period</p></blockquote>');
 
 -- --------------------------------------------------------
 
@@ -226,9 +224,9 @@ INSERT INTO `tblevents` (`id`, `start`, `end`, `title`, `start_time`, `end_time`
 (3, '2017-10-09', '2017-10-14', 'week summit', '11:11:00', '12:00:00', 1, 'Multiple Day Event', 1),
 (4, '2017-10-05', NULL, 'Suyom Alumni Award', '00:11:00', NULL, 1, 'Single day event', 1),
 (6, '2017-10-14', NULL, 'Defense for CCS Software Engineering', '08:00:00', NULL, 12, 'Single day event', 1),
-(8, '2017-10-16', '2017-10-21', 'CBA week', '07:00:00', '17:00:00', 14, 'Multiple Day Event', 1),
-(9, '2017-10-26', NULL, 'Ever day', '12:05:00', NULL, 16, 'Single day event', 11),
-(10, '2017-10-13', NULL, 'ITC congress', '10:00:00', NULL, 12, 'Single day event', 8);
+(10, '2017-10-13', NULL, 'ITC congress', '10:00:00', NULL, 12, 'Single day event', 8),
+(12, '2017-10-25', NULL, '25th day of october', '12:00:00', NULL, 12, 'Single day event', 1),
+(13, '2017-10-16', NULL, 'walang pasok', '12:00:00', NULL, 1, 'Single day event', 1);
 
 -- --------------------------------------------------------
 
@@ -430,7 +428,31 @@ INSERT INTO `tbllogs` (`log_id`, `log_user_id`, `log_user_level`, `log_header`, 
 (361, 1, 'admin', 'Success Login', 'Success Login at Wednesday 11th of October 2017 ', '19:53:25', '2017-10-11', 0, ''),
 (362, 8, 'admin', 'Success Login', 'Success Login at Wednesday 11th of October 2017 ', '20:02:37', '2017-10-11', 0, ''),
 (363, 1, 'admin', 'Success Logout', 'Success Logout at Wednesday 11th of October 2017 ', '00:31:26', '2017-10-12', 0, ''),
-(364, 1, 'admin', 'Success Login', 'Success Login at Wednesday 11th of October 2017 ', '00:31:31', '2017-10-12', 0, '');
+(364, 1, 'admin', 'Success Login', 'Success Login at Wednesday 11th of October 2017 ', '00:31:31', '2017-10-12', 0, ''),
+(365, 1, 'admin', 'Success Login', 'Success Login at Thursday 12th of October 2017 ', '23:30:48', '2017-10-12', 0, ''),
+(366, 1, 'admin', 'Success Logout', 'Success Logout at Thursday 12th of October 2017 ', '23:30:59', '2017-10-12', 0, ''),
+(367, 8, 'admin', 'Success Login', 'Success Login at Thursday 12th of October 2017 ', '23:31:03', '2017-10-12', 0, ''),
+(368, 8, 'admin', 'Success Logout', 'Success Logout at Thursday 12th of October 2017 ', '23:31:37', '2017-10-12', 0, ''),
+(369, 1, 'admin', 'Success Login', 'Success Login at Thursday 12th of October 2017 ', '23:31:46', '2017-10-12', 0, ''),
+(370, 8, 'admin', 'Success Login', 'Success Login at Thursday 12th of October 2017 ', '23:32:30', '2017-10-12', 0, ''),
+(371, 1, 'admin', 'Add Announcement', 'Add Announcement at Thursday 12th of October 2017 ', '23:50:05', '2017-10-12', 0, ''),
+(372, 1, 'admin', 'Add Announcement', 'Add Announcement at Thursday 12th of October 2017 ', '23:51:18', '2017-10-12', 0, ''),
+(373, 1, 'admin', 'Delete Announcement', 'Delete Announcement at Thursday 12th of October 2017 ', '23:51:23', '2017-10-12', 0, ''),
+(374, 1, 'admin', 'Update Event', 'Update Event at Thursday 12th of October 2017 ', '23:51:41', '2017-10-12', 0, ''),
+(375, 1, 'admin', 'Delete Event', 'Delete Event at Thursday 12th of October 2017 ', '23:51:46', '2017-10-12', 0, ''),
+(376, 1, 'admin', 'Update Event', 'Update Event at Thursday 12th of October 2017 ', '23:51:52', '2017-10-12', 0, ''),
+(377, 1, 'admin', 'Delete Event', 'Delete Event at Thursday 12th of October 2017 ', '23:51:56', '2017-10-12', 0, ''),
+(378, 8, 'admin', 'Add Announcement', 'Add Announcement at Thursday 12th of October 2017 ', '23:52:18', '2017-10-12', 0, ''),
+(379, 8, 'admin', 'Delete Announcement', 'Delete Announcement at Thursday 12th of October 2017 ', '23:53:54', '2017-10-12', 0, ''),
+(380, 1, 'admin', 'Success Logout', 'Success Logout at Thursday 12th of October 2017 ', '01:09:46', '2017-10-13', 0, ''),
+(381, 1, 'admin', 'Success Login', 'Success Login at Thursday 12th of October 2017 ', '01:10:06', '2017-10-13', 0, ''),
+(382, 1, 'admin', 'Success Login', 'Success Login at Friday 13th of October 2017 ', '22:32:39', '2017-10-13', 0, ''),
+(383, 1, 'admin', 'Add Event', 'Add Event at Friday 13th of October 2017 ', '23:44:40', '2017-10-13', 0, ''),
+(384, 1, 'admin', 'Delete Event', 'Delete Event at Friday 13th of October 2017 ', '23:45:10', '2017-10-13', 0, ''),
+(385, 1, 'admin', 'Add Event', 'Add Event at Friday 13th of October 2017 ', '23:45:28', '2017-10-13', 0, ''),
+(386, 1, 'admin', 'Add Event', 'Add Event at Friday 13th of October 2017 ', '23:46:04', '2017-10-13', 0, ''),
+(387, 1, 'admin', 'Update Event', 'Update Event at Friday 13th of October 2017 ', '23:46:19', '2017-10-13', 0, ''),
+(388, 1, 'admin', 'Update Event', 'Update Event at Friday 13th of October 2017 ', '23:46:27', '2017-10-13', 0, '');
 
 -- --------------------------------------------------------
 
@@ -532,7 +554,12 @@ INSERT INTO `tblprofessor` (`tbl_prof_id`, `prof_id`, `last_name`, `first_name`,
 (21, 'P0946362', 'Olaza', 'Trisha', 'Isaac', 'trishaolaza@gmail.com', 'trishaolaza', 'user4-128x128.jpg', 'Female', 14, '1988-08-29', '9457934507', '231 Palanan Street Makati City', 1, '2017-10-12'),
 (22, 'P0117601', 'Caimbon', 'Nerissa', 'Geene', 'nerissacaimbon@gmail.com', 'nerissacaimbon', 'avatar3.png', 'Female', 12, '1989-05-19', '9123951235', '333 Pio Del  Pilar Makati City', 1, '2017-10-12'),
 (23, 'P0656857', 'Escobal', 'Alexander', 'Allan', 'alexescobal@gmail.com', 'alexescobal', 'user2-160x160.jpg', 'Male', 12, '1981-09-21', '9992139583', '431 Amihan Street Brgy Amparo Quezon City', 1, '2017-10-12'),
-(24, 'P0182349', 'Reyes', 'Jessica', 'Abusmas', 'jessicareyes@gmail.com', 'jessicareyes', 'user3-128x128.jpg', 'Female', 12, '1983-03-22', '9755357973', '1715 Bagbag Street Brgy Bargong Barrio Pasig', 1, '2017-10-12');
+(24, 'P0182349', 'Reyes', 'Jessica', 'Abusmas', 'jessicareyes@gmail.com', 'jessicareyes', 'user3-128x128.jpg', 'Female', 12, '1983-03-22', '9755357973', '1715 Bagbag Street Brgy Bargong Barrio Pasig', 1, '2017-10-12'),
+(25, 'P0684522', 'Diampoc', 'Lester', 'G', 'lesterdiampoc@gmail.com', 'lesterdiampoc', '6.jpeg', 'Male', 12, '1988-06-14', '09831238768', 'Makati City', 1, '2017-10-14'),
+(26, 'P0468266', 'Makatao', 'Lucing', 'Kaning ', 'lucingmakatao@gmail.com', 'lucingmakatao', '7.jpeg', 'Female', 12, '1982-06-16', '09831238768', 'Makati City', 1, '2017-10-14'),
+(27, 'P0293187', 'Batucan', 'Abet', 'Singson', 'abetbatucan@gmail.com', 'abetbatucan', '5.jpeg', 'Male', 12, '1984-06-19', '09831238768', 'Makati City', 1, '2017-10-14'),
+(28, 'P0595530', 'Oximana', 'Mabel ', 'Hopi ', 'mabeloximana@gmail.com', 'mabeloximana', '12.jpeg', 'Female', 12, '1988-06-07', '09831238768', 'Makati City', 1, '2017-10-14'),
+(29, 'P0903973', 'Macasusi', 'Sheryl', 'Dero', 'sherylmacasusi@gmail.com', 'sherylmacasusi', '7.jpeg', 'Female', 12, '1983-06-29', '09831238768', 'Makati City', 1, '2017-10-14');
 
 -- --------------------------------------------------------
 
@@ -559,12 +586,11 @@ INSERT INTO `tblprofessorsubject` (`profsubject_id`, `prof_id`, `subject_id`, `s
 (3, '1', 3, 1, 1, 12, 7),
 (4, '2', 2, 1, 1, 12, 7),
 (5, '3', 12, 29, 1, 14, 10),
-(6, '5', 13, 30, 1, 15, 11),
-(7, '5', 14, 30, 1, 15, 11),
 (8, '6', 12, 29, 1, 14, 10),
 (9, '7', 4, 5, 4, 12, 7),
 (10, '7', 16, 4, 3, 12, 7),
-(11, '7', 0, 4, 3, 12, 7);
+(11, '7', 0, 4, 3, 12, 7),
+(12, '5', 0, 30, 1, 15, 11);
 
 -- --------------------------------------------------------
 
@@ -627,7 +653,6 @@ CREATE TABLE `tblsection` (
 INSERT INTO `tblsection` (`tbl_section_id`, `section_name`, `program_id`, `department_id`, `yearlevel`) VALUES
 (1, 'ACSAD', 7, 12, 1),
 (2, 'BCSAD', 7, 12, 1),
-(3, 'ACSAD', 7, 12, 2),
 (4, 'ACSAD', 7, 12, 3),
 (5, 'ACSAD', 7, 12, 4),
 (6, 'BCSAD', 7, 12, 2),
@@ -699,11 +724,10 @@ INSERT INTO `tblstudentinfo` (`tbl_student_id`, `student_id`, `last_name`, `firs
 (214, 'K0302575', 'Leonado', 'Raymond ', 'Gener ', 'blk 83 lot 20 Mojaco St. Brgy Hidden Leaf', '9123412345', 'alex.png', '1997-12-24', 'RaymondLeonador@gmail.com', 'Leonardo1224', 'Male', 10, 14, 'Bagatsing Ocampo', 1, 29, 1),
 (215, 'K0617677', 'Cervantez', 'Charisse', 'Pempemco', '1089 Iwatsuki Avenue', '9123787512', 'finalquestion.jpg', '1997-11-17', 'Cha.cervantez@gmail.com', 'Charissee0909', 'Female', 11, 15, 'Morged Cervantez', 1, 30, 1),
 (216, 'K0411444', 'Labrador', 'Aldwin', 'Balagtas', 'cainta cavite', '09831238768', 'user1-128x128.jpg', '1995-09-09', 'aldwinlabrador@gmail.com', 'aldwinlabrador', 'Male', 7, 12, 'Rosel Ann Labrador', 1, 5, 4),
-(217, 'K5150211', 'Mojares', 'Ely Nell Jireh', 'Longakit', '11th Avenue, East Rembo, Makati City', '09831238768', '4.jpeg', '1998-04-08', 'emojares.k5150211@umak.edu.ph', 'password123', 'Male', 7, 12, 'Ely Nell Jireh Mojares Sr.', 1, 4, 3),
 (218, 'K0770673', 'Odviar', 'Jenina Bianca', 'Joy', '958 Basilan St, Pitogo', '9555373134', 'guest2.jpg', '1997-09-23', 'Odviar.bia@yahoo.com', 'jeninaodviar58', 'Female', 7, 12, 'Marcelito Bermoy', 1, 0, 0),
 (219, 'K0881782', 'De leon', 'Leonev', 'Hofana', '1792-E, 24th Ave., East Rembo Makati City', '9876598746', 'guest2.jpg', '1993-01-08', 'l.Deleon11@gmail.com', 'Deleonnev09', 'Male', 7, 12, 'Princess Franciso', 1, 0, 0),
 (220, 'K0056726', 'Malbog', 'John Carlo', 'Muefas', 'Blk 324 L-7 Oniole St, Brgy Rizal Makati City', '9995116255', 'guest2.jpg', '1993-09-12', 'J.Malbog08@gmail.com', 'Cleopatra88', 'Male', 7, 12, 'Hermo Malbog', 1, 4, 3),
-(221, 'K0665154', 'Majait', 'Kimie Kate', 'Delatran', 'Bldg 3453 Guadalupe Bliss  Cembo Makati Ctiy', '9876987656', 'guest2.jpg', '1998-08-27', 'K.Majait2@gmail.com', 'Nag8ahit', 'Female', 7, 12, 'Lilibeth Dael', 1, 0, 0),
+(221, 'K0665154', 'Majait', 'Kimie Kate', 'Delatran', 'Bldg 3453 Guadalupe Bliss  Cembo Makati Ctiy', '9876987656', 'guest2.jpg', '1998-08-27', 'K.Majait2@gmail.com', 'Nag8ahit', 'Female', 7, 12, 'Lilibeth Dael', 0, 0, 0),
 (222, 'K0619846', 'Ganaban', 'Geco Carl', 'Tres', '1228 Tiger Mouse St, Brgy. Rizal Makati City', '9123498765', 'guest2.jpg', '1996-05-08', 'G.Ganaban@gmail.com', 'GecoGeco98', 'Male', 7, 12, 'Geraldine Ganaban', 1, 0, 0),
 (223, 'K0123970', 'Renon', 'Bianca Mae', 'Reblos', '16 Yobcaton St. Brgy. Lapaz Makati City', '9899769872', 'guest2.jpg', '1998-02-08', 'B.Renon@gmail.com', 'GeorgeLovek0', 'Female', 7, 12, 'Fernando Renon', 1, 4, 3),
 (224, 'K0670115', 'Soriano', 'George', 'Swerte', 'Juan Luna St. Brgy. Rizal Makati City', '9999765432', 'guest2.jpg', '1997-09-22', 'G.Soriano@gmail.com', 'SorianoBians4', 'Male', 7, 12, 'Carmelita Soriano', 1, 0, 0),
@@ -722,7 +746,7 @@ INSERT INTO `tblstudentinfo` (`tbl_student_id`, `student_id`, `last_name`, `firs
 (237, 'K0082048', 'Dalit', 'Gibblyn', 'Mamshies', 'Roma amor St. Brgy Rizal Makati City', '9099366820', 'guest2.jpg', '1998-06-09', 'D.Gibblyn@gmail.com', 'GDalit98', 'Female', 7, 12, 'Carpio Dalit', 1, 4, 3),
 (238, 'K0216271', 'Gordo', 'Alexander', 'Canlas', '2379 Gen.Alejandrino St, Bangkal. Makati ', '9509103472', 'guest2.jpg', '1992-10-02', 'ajgordo08@gmail.com', 'gordo481527', 'Male', 7, 12, 'Susan Gordo', 1, 4, 3),
 (239, 'K0693072', 'Peregrino', 'Zanjoe', 'Canlas', '258 Luzon St.Pagsanghan Pitogo Makati', '9129876546', 'guest2.jpg', '1998-02-08', 'Z.Peregrino@gmail.com', 'SanMiguelbeer99', 'Male', 7, 12, 'Joseph Peregrino', 1, 0, 0),
-(240, 'K0929571', 'Peregrino', 'Joseph', 'Cuela', '39 Alibaba St,Guadalupe Nuevo', '9898766675', 'guest2.jpg', '1998-02-08', 'J.Peregrino@gmail.com', 'Jaworski26', 'Male', 7, 12, 'Camid Amoto', 1, 0, 0),
+(240, 'K0929571', 'Peregrino', 'Joseph', 'Cuela', '39 Alibaba St,Guadalupe Nuevo', '9898766675', 'guest2.jpg', '1998-02-08', 'J.Peregrino@gmail.com', 'Jaworski26', 'Male', 7, 12, 'Camid Amoto', 0, 0, 0),
 (241, 'K0121459', 'Gomez', 'Joycee', 'Cuevas', '3452 Garcia St.Pinagkaisahan Makati City', '9114457898', 'guest2.jpg', '1990-08-15', 'JoyceeGomez@gmail.com', 'JoyceeMervs00', 'Female', 7, 12, 'Audie Corpuz', 1, 4, 3),
 (242, 'K0504950', 'Dela torre', 'Joseph', 'Espinosa', '203 P.Victorino Mandaluyong', '9090876453', 'guest2.jpg', '1994-10-28', 'J.Delatorre@gmail.com', 'Delatorre88', 'Male', 7, 12, 'Judith Dela Torre', 1, 0, 0),
 (243, 'K0027727', 'Arnejo', 'Arjay', 'arfarf', 'Waterlily SouthCembo Makati City', '9890980301', 'guest2.jpg', '1995-11-01', 'A.Arnejo@gmail.com', 'ArnejoPogi08', 'Male', 7, 12, 'Marcela Arnejo', 1, 4, 3),
@@ -824,14 +848,18 @@ INSERT INTO `tblsubjects` (`subject_id`, `cfn`, `subject_name`, `subject_code`, 
 (6, 'A0053570', 'AUTOCAD TRAINING', 'AUTOCADs', 12, 1),
 (7, 'A0831991', 'MODELING AND SIMULATION', 'MODSIMU', 12, 1),
 (8, 'A0859377', 'SYSTEM ANALYSIS AND DESIGN', 'SYSSANDE', 12, 1),
-(9, 'A0577748', 'automata basics', 'Automata1', 12, 1),
+(9, 'A0577748', 'AUTOMATA BASICS', 'AUTOMATA1', 12, 1),
 (10, 'A0886219', 'Accounting Basic 1', 'ACCOUNTING 1', 14, 1),
 (11, 'A0796605', 'Accounting Basic 2', 'ACCOUNTING 2', 14, 1),
 (12, 'A0832595', 'Business Mathematics1', 'BUSINESS MATH', 14, 1),
 (13, 'A0639900', 'MATHEMATICS ENGINEERING 1', 'MATHENG 1', 15, 1),
 (14, 'A0746674', 'ENGINEERING BASIC 1', 'ENGBASE1', 15, 1),
-(15, 'A0904564', 'Human Anatomy 1', 'Humatomy 1', 16, 1),
-(16, 'A0777807', 'MOBILE COMPUTING', 'MOBICOM', 12, 1);
+(15, 'A0904564', 'Human Anatomy 1', 'Humatomy 1', 16, 0),
+(16, 'A0777807', 'MOBILE COMPUTING', 'MOBICOM', 12, 1),
+(17, 'A0701206', 'AUTOMATA AND LANGUAGE THEORY', 'AUTOLANG', 12, 1),
+(18, 'A0173338', 'SOFTWARE ENGINEERING', 'SOFTENG', 12, 1),
+(19, 'A0740160', 'METHODS OF RESEARCH', 'METHODS', 12, 1),
+(20, 'A0711508', 'DISTRIBUTED SYSTEM', 'DISTRIBSYS', 12, 1);
 
 -- --------------------------------------------------------
 
@@ -871,7 +899,8 @@ CREATE TABLE `tbltutorials` (
 
 INSERT INTO `tbltutorials` (`tutorial_id`, `subject_id`, `tutorial_name`, `tutorial_asset`, `department_id`, `tutorial_type`) VALUES
 (5, 12, 'Business Math Introduction', 'https://www.youtube.com/results?search_query=business+math+introduction', 14, 'web link'),
-(7, 1, 'Arduino Fundamentals', 'https://create.arduino.cc/projecthub/projects/tags/android', 12, 'web link');
+(7, 1, 'Arduino Fundamentals', 'https://create.arduino.cc/projecthub/projects/tags/android', 12, 'web link'),
+(8, 1, 'Basic Flowcharting', 'https://www.gliffy.com/blog/how-to-flowchart-basic-symbols-part-1-of-3', 12, 'web link');
 
 -- --------------------------------------------------------
 
@@ -1118,7 +1147,7 @@ ALTER TABLE `tbldepartments`
 -- AUTO_INCREMENT for table `tblevents`
 --
 ALTER TABLE `tblevents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `tblguidance`
 --
@@ -1138,7 +1167,7 @@ ALTER TABLE `tblguidancerating`
 -- AUTO_INCREMENT for table `tbllogs`
 --
 ALTER TABLE `tbllogs`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=365;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=389;
 --
 -- AUTO_INCREMENT for table `tblmessage`
 --
@@ -1153,12 +1182,12 @@ ALTER TABLE `tblprevileges`
 -- AUTO_INCREMENT for table `tblprofessor`
 --
 ALTER TABLE `tblprofessor`
-  MODIFY `tbl_prof_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `tbl_prof_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `tblprofessorsubject`
 --
 ALTER TABLE `tblprofessorsubject`
-  MODIFY `profsubject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `profsubject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `tblprofrating`
 --
@@ -1193,7 +1222,7 @@ ALTER TABLE `tblstudentswhowantstobeinstructor`
 -- AUTO_INCREMENT for table `tblsubjects`
 --
 ALTER TABLE `tblsubjects`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `tbltutor`
 --
@@ -1203,7 +1232,7 @@ ALTER TABLE `tbltutor`
 -- AUTO_INCREMENT for table `tbltutorials`
 --
 ALTER TABLE `tbltutorials`
-  MODIFY `tutorial_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `tutorial_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `tbltutorialsummary`
 --
